@@ -30,15 +30,13 @@ function handleSubmit(event) {
     const songName = document.getElementById('song-name').value.trim();
     const artistName = document.getElementById('artist-name').value.trim();
     
-    // Basic validation
+    // Basic validation (browser's built-in validation handles required fields)
     if (!songName || !artistName) {
-        alert('Please fill in both song title and artist name.');
         return;
     }
     
     // Here you could send the data to a backend or analytics service
-    // For now, we'll just log it (in a real app, this would be removed)
-    console.log('Song submitted:', { song: songName, artist: artistName });
+    // Example: fetch('/api/submit', { method: 'POST', body: JSON.stringify({ song: songName, artist: artistName }) });
     
     // Clear the form
     songForm.reset();
