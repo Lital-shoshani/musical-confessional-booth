@@ -291,17 +291,23 @@ body::after {
 
 /* Accessibility - Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+    /* Stop all animations for users who prefer reduced motion */
     body::before {
-        animation: none !important;
+        animation: none;
         filter: blur(60px);
         opacity: 0.3;
     }
     
-    *,
+    * {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+    }
+    
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
     }
 }

@@ -28,9 +28,12 @@ function navigateToScreen(screenName) {
 // Validate song input format (should contain song and artist)
 function validateSongInput(input) {
     const trimmed = input.trim();
-    // Check if input contains a separator (—, -, by, etc.) and has content on both sides
-    const hasSeparator = /[—\-–]|by/i.test(trimmed);
-    const parts = trimmed.split(/[—\-–]|by/i);
+    // Pattern to match separators: em dash (—), hyphen (-), en dash (–), or "by"
+    const separatorPattern = /[—\-–]|by/i;
+    
+    // Check if input contains a separator
+    const hasSeparator = separatorPattern.test(trimmed);
+    const parts = trimmed.split(separatorPattern);
     
     if (!hasSeparator || parts.length < 2) {
         return false;
@@ -41,6 +44,9 @@ function validateSongInput(input) {
 }
 
 // Store submission in localStorage
+// Note: Submissions are stored for potential backend sync but should NEVER be displayed
+// in the UI to maintain anonymity and privacy. Access localStorage directly if needed
+// for administrative purposes only.
 function storeSubmission(songData) {
     try {
         // Get existing submissions or initialize empty array
