@@ -5,10 +5,12 @@ const screens = {
     thankyou: document.getElementById('thankyou-screen')
 };
 
-// Buttons
+// Elements
 const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
 const songForm = document.getElementById('song-form');
+const songInput = document.getElementById('song-input');
+const errorMessage = document.getElementById('error-message');
 
 // Navigate to a specific screen
 function navigateToScreen(screenName) {
@@ -23,20 +25,64 @@ function navigateToScreen(screenName) {
     }
 }
 
+// Validate song input format (should contain song and artist)
+function validateSongInput(input) {
+    const trimmed = input.trim();
+    // Check if input contains a separator (—, -, by, etc.) and has content on both sides
+    const hasSeparator = /[—\-–]|by/i.test(trimmed);
+    const parts = trimmed.split(/[—\-–]|by/i);
+    
+    if (!hasSeparator || parts.length < 2) {
+        return false;
+    }
+    
+    // Check that both parts have content
+    return parts.every(part => part.trim().length > 0);
+}
+
+// Store submission in localStorage
+function storeSubmission(songData) {
+    try {
+        // Get existing submissions or initialize empty array
+        const submissions = JSON.parse(localStorage.getItem('songSubmissions') || '[]');
+        
+        // Add new submission with timestamp
+        submissions.push({
+            song: songData,
+            timestamp: new Date().toISOString()
+        });
+        
+        // Store back to localStorage
+        localStorage.setItem('songSubmissions', JSON.stringify(submissions));
+    } catch (error) {
+        // Silently fail if localStorage is not available
+        console.error('Failed to store submission:', error);
+    }
+}
+
 // Handle form submission
 function handleSubmit(event) {
     event.preventDefault();
     
-    const songName = document.getElementById('song-name').value.trim();
-    const artistName = document.getElementById('artist-name').value.trim();
+    const songData = songInput.value.trim();
     
-    // Basic validation (browser's built-in validation handles required fields)
-    if (!songName || !artistName) {
+    // Hide any previous error messages
+    errorMessage.classList.remove('show');
+    
+    // Validate input
+    if (!songData) {
+        errorMessage.classList.add('show');
         return;
     }
     
-    // Here you could send the data to a backend or analytics service
-    // Example: fetch('/api/submit', { method: 'POST', body: JSON.stringify({ song: songName, artist: artistName }) });
+    // Check if it contains both song and artist
+    if (!validateSongInput(songData)) {
+        errorMessage.classList.add('show');
+        return;
+    }
+    
+    // Store submission in localStorage (but never display it)
+    storeSubmission(songData);
     
     // Clear the form
     songForm.reset();
@@ -51,10 +97,20 @@ startBtn.addEventListener('click', () => {
 });
 
 restartBtn.addEventListener('click', () => {
+    // Clear form and error messages when returning to start
+    songForm.reset();
+    errorMessage.classList.remove('show');
     navigateToScreen('welcome');
 });
 
 songForm.addEventListener('submit', handleSubmit);
+
+// Hide error message when user starts typing
+songInput.addEventListener('input', () => {
+    if (errorMessage.classList.contains('show')) {
+        errorMessage.classList.remove('show');
+    }
+});
 
 // Keyboard navigation enhancement
 document.addEventListener('keydown', (event) => {

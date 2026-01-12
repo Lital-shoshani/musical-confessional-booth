@@ -5,33 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A digital jukebox-style confessional for anonymously sharing a secret song">
     <title>The Musical Confessional Booth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Welcome Screen -->
     <section id="welcome-screen" class="screen active">
         <div class="content">
-            <h1 class="title">The Musical<br>Confessional Booth</h1>
-            <p class="subtitle">Share your secret song anonymously</p>
-            <button id="start-btn" class="cta-button">Enter the Booth</button>
+            <h1 class="title">Welcome to the Musical Confessional Booth</h1>
+            <p class="body-text">We all have songs we love to listen to in secret.<br>Here you can share yours in a safe, protected space.</p>
+            <p class="accent-text">It's anonymous, so feel free to reveal it.</p>
+            <button id="start-btn" class="cta-button">I'm ready</button>
         </div>
     </section>
 
     <!-- Song Submission Screen -->
     <section id="submission-screen" class="screen">
         <div class="content">
-            <h2 class="screen-title">Your Secret Song</h2>
-            <p class="instruction">Tell us about the song that holds your secret</p>
+            <h2 class="title">Choose your secret song</h2>
+            <p class="helper-text">Pick the song you keep most to yourself — a little embarrassing, a little unexpected, and revealing a side of you.</p>
             <form id="song-form">
                 <div class="form-group">
-                    <label for="song-name">Song Title</label>
-                    <input type="text" id="song-name" name="song-name" placeholder="Enter song title" required>
+                    <label for="song-input">Song + artist</label>
+                    <input type="text" id="song-input" name="song-input" placeholder="e.g., Toxic — Britney Spears" required>
+                    <span class="error-message" id="error-message">Quick note — please enter a song and an artist to continue.</span>
                 </div>
-                <div class="form-group">
-                    <label for="artist-name">Artist</label>
-                    <input type="text" id="artist-name" name="artist-name" placeholder="Enter artist name" required>
-                </div>
-                <button type="submit" class="cta-button">Submit Confession</button>
+                <button type="submit" class="cta-button">Send the secret</button>
             </form>
         </div>
     </section>
@@ -39,9 +40,10 @@
     <!-- Thank You Screen -->
     <section id="thankyou-screen" class="screen">
         <div class="content">
-            <h2 class="screen-title">Thank You</h2>
-            <p class="message">Your secret song has been received.<br>It will live on in the jukebox of confessions.</p>
-            <button id="restart-btn" class="cta-button">Return to Start</button>
+            <h2 class="title">Thank you. Your secret is safe with us.</h2>
+            <p class="body-text">Later, I'll share the class playlist with everyone.</p>
+            <p class="small-text">You can step out now — hope you enjoyed it.</p>
+            <button id="restart-btn" class="cta-button">Back to start</button>
         </div>
     </section>
 
