@@ -99,6 +99,171 @@ body::after {
     z-index: 2;
 }
 
+/* Welcome Screen Redesign */
+#welcome-screen {
+    background: #1A1717;
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+#welcome-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    background: linear-gradient(135deg, #FF0000 0%, #FFEA28 33%, #60DAFF 68%, #F31DDE 100%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#welcome-screen::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 20%, #E2725B 0%, #E2725B 15%, #E65638 25%, transparent 35%),
+        radial-gradient(circle at 85% 85%, #5B5CE2 0%, #5B5CE2 15%, #9333EA 25%, transparent 35%);
+    filter: blur(100px);
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.welcome-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 104px;
+    z-index: 2;
+}
+
+.welcome-text {
+    margin-bottom: auto;
+    padding-top: 0;
+}
+
+.welcome-title {
+    font-family: 'Crete Round', serif;
+    font-style: italic;
+    font-size: 74px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 48px;
+    letter-spacing: normal;
+}
+
+.welcome-body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #FFFFFF;
+    margin-bottom: 48px;
+    letter-spacing: normal;
+}
+
+.welcome-highlight {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #FF9288;
+    margin-bottom: 0;
+    letter-spacing: normal;
+}
+
+.welcome-button {
+    align-self: flex-end;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 9999px;
+    padding: 18px 48px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: normal;
+}
+
+.welcome-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments for welcome screen */
+@media (max-width: 1024px) {
+    .welcome-content {
+        padding: 80px;
+    }
+    
+    .welcome-title {
+        font-size: 56px;
+    }
+    
+    .welcome-body,
+    .welcome-highlight {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-content {
+        padding: 60px;
+    }
+    
+    .welcome-title {
+        font-size: 42px;
+    }
+    
+    .welcome-body,
+    .welcome-highlight {
+        font-size: 18px;
+    }
+    
+    .welcome-button {
+        font-size: 16px;
+        padding: 16px 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-content {
+        padding: 40px;
+    }
+    
+    .welcome-title {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+    
+    .welcome-body,
+    .welcome-highlight {
+        font-size: 16px;
+        margin-bottom: 32px;
+    }
+    
+    .welcome-button {
+        font-size: 14px;
+        padding: 14px 28px;
+    }
+}
+
 /* Fallback for browsers that don't support dvh */
 @supports not (height: 100dvh) {
     .screen {
