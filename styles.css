@@ -142,7 +142,7 @@ body::after {
 }
 
 .body-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
@@ -169,7 +169,7 @@ body::after {
 }
 
 .small-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(0.85rem, 2vw, 0.95rem);
     color: var(--color-text-muted);
     margin-bottom: 2.5rem;
@@ -216,7 +216,7 @@ body::after {
 
 .form-group label {
     display: block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(0.85rem, 2vw, 0.95rem);
     font-weight: 400;
     margin-bottom: 0.5rem;
@@ -233,7 +233,7 @@ body::after {
     border-radius: 8px;
     color: var(--color-text);
     transition: all 0.3s ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }
 
@@ -249,7 +249,7 @@ body::after {
 
 .error-message {
     display: none;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(0.8rem, 2vw, 0.875rem);
     color: var(--color-accent-pink);
     margin-top: 0.5rem;
