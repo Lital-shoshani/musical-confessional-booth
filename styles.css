@@ -131,10 +131,10 @@ body::after {
     width: 200%;
     height: 200%;
     background: 
-        radial-gradient(circle at 20% 20%, #E2725B 0%, #E2725B 15%, #E65638 25%, transparent 35%),
-        radial-gradient(circle at 85% 85%, #5B5CE2 0%, #5B5CE2 15%, #9333EA 25%, transparent 35%);
+        radial-gradient(circle at 10% 10%, #E2725B 0%, #E2725B 8%, #E65638 15%, transparent 25%),
+        radial-gradient(circle at 92% 92%, #5B5CE2 0%, #5B5CE2 8%, #9333EA 15%, transparent 25%);
     filter: blur(100px);
-    opacity: 1;
+    opacity: 0.25;
     pointer-events: none;
     z-index: 1;
 }
@@ -146,7 +146,7 @@ body::after {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 104px;
+    padding: 64px;
     z-index: 2;
 }
 
@@ -158,27 +158,27 @@ body::after {
 .welcome-title {
     font-family: 'Crete Round', serif;
     font-style: italic;
-    font-size: 74px;
+    font-size: 58px;
     font-weight: 400;
     line-height: 1.2;
     color: #FFFFFF;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     letter-spacing: normal;
 }
 
 .welcome-body {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 1.5;
     color: #FFFFFF;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     letter-spacing: normal;
 }
 
 .welcome-highlight {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
     color: #FF9288;
@@ -189,13 +189,13 @@ body::after {
 .welcome-button {
     align-self: flex-end;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #000000;
     background: #FFFFFF;
     border: none;
     border-radius: 9999px;
-    padding: 18px 48px;
+    padding: 14px 36px;
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: normal;
@@ -209,26 +209,11 @@ body::after {
 /* Responsive adjustments for welcome screen */
 @media (max-width: 1024px) {
     .welcome-content {
-        padding: 80px;
+        padding: 56px;
     }
     
     .welcome-title {
-        font-size: 56px;
-    }
-    
-    .welcome-body,
-    .welcome-highlight {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .welcome-content {
-        padding: 60px;
-    }
-    
-    .welcome-title {
-        font-size: 42px;
+        font-size: 48px;
     }
     
     .welcome-body,
@@ -237,30 +222,52 @@ body::after {
     }
     
     .welcome-button {
-        font-size: 16px;
-        padding: 16px 36px;
+        font-size: 15px;
+        padding: 12px 32px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .welcome-content {
-        padding: 40px;
+        padding: 48px;
     }
     
     .welcome-title {
-        font-size: 32px;
-        margin-bottom: 32px;
+        font-size: 38px;
+        margin-bottom: 24px;
     }
     
     .welcome-body,
     .welcome-highlight {
         font-size: 16px;
-        margin-bottom: 32px;
+        margin-bottom: 24px;
     }
     
     .welcome-button {
         font-size: 14px;
-        padding: 14px 28px;
+        padding: 12px 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-content {
+        padding: 32px;
+    }
+    
+    .welcome-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .welcome-body,
+    .welcome-highlight {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .welcome-button {
+        font-size: 13px;
+        padding: 10px 24px;
     }
 }
 
