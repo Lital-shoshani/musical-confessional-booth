@@ -618,16 +618,12 @@ body::after {
 
 #song-form {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 #song-form .cta-button {
     position: fixed;
     bottom: 64px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 64px;
     margin-top: 0;
     width: auto;
     z-index: 5;
