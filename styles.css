@@ -108,6 +108,10 @@ body::after {
     padding-top: 12vh;
 }
 
+#submission-screen .title {
+    text-align: center;
+}
+
 #submission-screen::before {
     content: '';
     position: absolute;
@@ -539,7 +543,7 @@ body::after {
 /* Spotify Preview Card Placeholder */
 .spotify-preview {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.03);
@@ -623,7 +627,8 @@ body::after {
 #song-form .cta-button {
     position: fixed;
     bottom: 64px;
-    right: 64px;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: 0;
     width: auto;
     z-index: 5;
@@ -653,7 +658,8 @@ body::after {
 @media (max-width: 1024px) {
     #submission-screen #song-form .cta-button {
         bottom: 56px;
-        right: 56px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
