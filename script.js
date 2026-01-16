@@ -25,22 +25,11 @@ function navigateToScreen(screenName) {
     }
 }
 
-// Validate song input format (should contain song and artist)
+// Validate song input format (accept any non-empty input)
 function validateSongInput(input) {
     const trimmed = input.trim();
-    // Pattern to match separators: em dash (—), hyphen (-), en dash (–), or "by"
-    const separatorPattern = /[—\-–]|by/i;
-    
-    // Check if input contains a separator
-    const hasSeparator = separatorPattern.test(trimmed);
-    const parts = trimmed.split(separatorPattern);
-    
-    if (!hasSeparator || parts.length < 2) {
-        return false;
-    }
-    
-    // Check that both parts have content
-    return parts.every(part => part.trim().length > 0);
+    // Accept any non-empty input - no separator required
+    return trimmed.length > 0;
 }
 
 // Store submission in localStorage
@@ -123,6 +112,18 @@ document.addEventListener('keydown', (event) => {
     // Allow Enter key on welcome screen to start
     if (event.key === 'Enter' && screens.welcome.classList.contains('active')) {
         navigateToScreen('submission');
+    }
+    
+    // Prevent Enter key from submitting form on submission screen
+    // Instead, it should trigger Spotify search (to be implemented)
+    if (event.key === 'Enter' && screens.submission.classList.contains('active')) {
+        // Check if the target is the song input field
+        if (event.target.id === 'song-input') {
+            event.preventDefault();
+            // TODO: Trigger Spotify search here when API integration is added
+            // For now, just prevent form submission
+            console.log('Enter pressed - ready for Spotify search integration');
+        }
     }
 });
 
