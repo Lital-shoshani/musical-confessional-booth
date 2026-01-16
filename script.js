@@ -25,11 +25,22 @@ function navigateToScreen(screenName) {
     }
 }
 
-// Validate song input format (accept any non-empty input)
+// Validate song input format (should contain song and artist)
 function validateSongInput(input) {
     const trimmed = input.trim();
-    // Accept any non-empty input - no separator required
-    return trimmed.length > 0;
+    // Pattern to match separators: em dash (—), hyphen (-), en dash (–), or "by"
+    const separatorPattern = /[—\-–]|by/i;
+    
+    // Check if input contains a separator
+    const hasSeparator = separatorPattern.test(trimmed);
+    const parts = trimmed.split(separatorPattern);
+    
+    if (!hasSeparator || parts.length < 2) {
+        return false;
+    }
+    
+    // Check that both parts have content
+    return parts.every(part => part.trim().length > 0);
 }
 
 // Store submission in localStorage
