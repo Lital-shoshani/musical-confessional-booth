@@ -25,13 +25,17 @@ const previewAlbum = document.getElementById('preview-album');
 const previewTitle = document.getElementById('preview-title');
 const previewArtist = document.getElementById('preview-artist');
 const previewPlayBtn = document.getElementById('preview-play');
-const youtubePlayerWrapper = document.getElementById('youtube-player-wrapper');
+const previewProgress = document.getElementById('preview-progress');
+const progressFill = document.getElementById('progress-fill');
+const previewTime = document.getElementById('preview-time');
 
 // YouTube API state
 let searchTimeout = null;
 let youtubePlayer = null;
 let currentVideoId = null;
 let selectedSong = null;
+let isPlaying = false;
+let progressInterval = null;
 
 // Check if API key is configured
 function checkAPIKey() {
@@ -134,11 +138,17 @@ function selectSong(song) {
     selectedSong = song;
     songInput.value = `${song.title} — ${song.artist}`;
     
+    // Reset player state
+    stopPlayer();
+    
     // Update preview card
     previewAlbum.innerHTML = `<img src="${song.thumbnail}" alt="${song.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
     previewTitle.textContent = song.title;
     previewArtist.textContent = song.artist;
     previewCard.style.display = 'flex';
+    
+    // Hide progress initially
+    previewProgress.style.display = 'none';
     
     currentVideoId = song.videoId;
     
@@ -146,30 +156,103 @@ function selectSong(song) {
     errorMessage.classList.remove('show');
 }
 
-// Initialize YouTube Player
+// Format time from seconds to MM:SS
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Update progress bar
+function updateProgress() {
+    if (!youtubePlayer || !isPlaying) return;
+    
+    try {
+        const currentTime = youtubePlayer.getCurrentTime();
+        const duration = youtubePlayer.getDuration();
+        
+        if (duration > 0) {
+            const progress = (currentTime / duration) * 100;
+            progressFill.style.width = `${progress}%`;
+            previewTime.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        }
+    } catch (error) {
+        // Player not ready, ignore
+    }
+}
+
+// Stop player and reset
+function stopPlayer() {
+    if (youtubePlayer) {
+        try {
+            youtubePlayer.pauseVideo();
+        } catch (error) {
+            // Player not ready, ignore
+        }
+    }
+    
+    isPlaying = false;
+    previewPlayBtn.classList.remove('playing');
+    previewProgress.style.display = 'none';
+    
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
+}
+
+// Initialize YouTube Player (hidden)
 function initYouTubePlayer(videoId) {
     if (!youtubePlayer) {
         youtubePlayer = new YT.Player('youtube-player', {
-            height: '300',
-            width: '100%',
+            height: '1',
+            width: '1',
             videoId: videoId,
             playerVars: {
                 'autoplay': 0,
-                'rel': 0,
-                'modestbranding': 1
+                'controls': 0
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
             }
         });
     } else {
         youtubePlayer.loadVideoById(videoId);
     }
-    
-    youtubePlayerWrapper.style.display = 'block';
+}
+
+// Handle player state changes
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        previewPlayBtn.classList.add('playing');
+        previewProgress.style.display = 'block';
+        
+        // Start progress update interval
+        if (progressInterval) clearInterval(progressInterval);
+        progressInterval = setInterval(updateProgress, 100);
+    } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+        stopPlayer();
+    }
 }
 
 // Handle preview play button click
 previewPlayBtn.addEventListener('click', () => {
-    if (currentVideoId) {
+    if (!currentVideoId) return;
+    
+    if (!youtubePlayer) {
         initYouTubePlayer(currentVideoId);
+        setTimeout(() => {
+            if (youtubePlayer) {
+                youtubePlayer.playVideo();
+            }
+        }, 500);
+    } else {
+        if (isPlaying) {
+            youtubePlayer.pauseVideo();
+        } else {
+            youtubePlayer.playVideo();
+        }
     }
 });
 
@@ -186,7 +269,7 @@ songInput.addEventListener('input', (e) => {
     if (selectedSong && query !== `${selectedSong.title} — ${selectedSong.artist}`) {
         selectedSong = null;
         previewCard.style.display = 'none';
-        youtubePlayerWrapper.style.display = 'none';
+        stopPlayer();
     }
     
     // Debounce search
@@ -276,7 +359,7 @@ function handleSubmit(event) {
     selectedSong = null;
     currentVideoId = null;
     previewCard.style.display = 'none';
-    youtubePlayerWrapper.style.display = 'none';
+    stopPlayer();
     hideAutocomplete();
     
     // Navigate to thank you screen
@@ -294,7 +377,7 @@ restartBtn.addEventListener('click', () => {
     selectedSong = null;
     currentVideoId = null;
     previewCard.style.display = 'none';
-    youtubePlayerWrapper.style.display = 'none';
+    stopPlayer();
     hideAutocomplete();
     navigateToScreen('welcome');
 });
@@ -314,9 +397,20 @@ document.addEventListener('keydown', (event) => {
         if (event.target.id === 'song-input') {
             event.preventDefault();
             
-            // If a song is selected, show/focus player
+            // If a song is selected, play/pause
             if (selectedSong && currentVideoId) {
-                initYouTubePlayer(currentVideoId);
+                if (youtubePlayer && isPlaying) {
+                    youtubePlayer.pauseVideo();
+                } else if (youtubePlayer) {
+                    youtubePlayer.playVideo();
+                } else {
+                    initYouTubePlayer(currentVideoId);
+                    setTimeout(() => {
+                        if (youtubePlayer) {
+                            youtubePlayer.playVideo();
+                        }
+                    }, 500);
+                }
             }
         }
     }

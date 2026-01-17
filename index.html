@@ -45,14 +45,18 @@
                     <div class="spotify-preview-info">
                         <div class="spotify-preview-title" id="preview-title">Song Title</div>
                         <div class="spotify-preview-artist" id="preview-artist">Artist Name</div>
+                        <div class="spotify-preview-progress" id="preview-progress" style="display: none;">
+                            <div class="spotify-preview-progress-bar">
+                                <div class="spotify-preview-progress-fill" id="progress-fill"></div>
+                            </div>
+                            <div class="spotify-preview-time" id="preview-time">0:00 / 0:00</div>
+                        </div>
                     </div>
                     <button type="button" class="spotify-preview-play" id="preview-play"></button>
                 </div>
                 
-                <!-- YouTube Player -->
-                <div class="youtube-player-wrapper" id="youtube-player-wrapper" style="display: none;">
-                    <div id="youtube-player"></div>
-                </div>
+                <!-- Hidden YouTube Player -->
+                <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px;"></div>
                 
                 <button type="submit" class="cta-button">Send the secret</button>
             </form>
