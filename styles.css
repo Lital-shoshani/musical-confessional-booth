@@ -282,7 +282,8 @@ body::after {
 
 .welcome-button {
     flex: 0 0 auto;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Crete Round', serif;
+    font-style: italic;
     font-size: 16px;
     font-weight: 400;
     color: #000000;
