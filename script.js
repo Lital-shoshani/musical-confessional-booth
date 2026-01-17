@@ -147,8 +147,11 @@ function selectSong(song) {
     previewArtist.textContent = song.artist;
     previewCard.style.display = 'flex';
     
-    // Hide progress initially (but keep space reserved)
-    previewProgress.classList.remove('is-playing');
+    // Show progress bar immediately (always visible)
+    previewProgress.style.visibility = 'visible';
+    previewProgress.style.opacity = '1';
+    progressFill.style.width = '0%';
+    previewTime.textContent = '0:00 / 0:00';
     
     currentVideoId = song.videoId;
     
@@ -193,7 +196,7 @@ function stopPlayer() {
     
     isPlaying = false;
     previewPlayBtn.classList.remove('playing');
-    previewProgress.classList.remove('is-playing');
+    // Keep progress bar visible, just stop updating it
     
     if (progressInterval) {
         clearInterval(progressInterval);
@@ -226,7 +229,6 @@ function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PLAYING) {
         isPlaying = true;
         previewPlayBtn.classList.add('playing');
-        previewProgress.classList.add('is-playing');
         
         // Start progress update interval
         if (progressInterval) clearInterval(progressInterval);
