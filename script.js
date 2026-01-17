@@ -250,10 +250,24 @@ previewPlayBtn.addEventListener('click', () => {
             }
         }, 500);
     } else {
-        if (isPlaying) {
-            youtubePlayer.pauseVideo();
+        // Check if we need to load a different video
+        const loadedVideoUrl = youtubePlayer.getVideoUrl();
+        const loadedVideoId = loadedVideoUrl ? loadedVideoUrl.split('v=')[1]?.split('&')[0] : null;
+        
+        if (loadedVideoId !== currentVideoId) {
+            // Load the new video
+            youtubePlayer.loadVideoById(currentVideoId);
+            // Wait a bit for the video to load before playing
+            setTimeout(() => {
+                youtubePlayer.playVideo();
+            }, 500);
         } else {
-            youtubePlayer.playVideo();
+            // Same video - just play/pause
+            if (isPlaying) {
+                youtubePlayer.pauseVideo();
+            } else {
+                youtubePlayer.playVideo();
+            }
         }
     }
 });
@@ -401,17 +415,33 @@ document.addEventListener('keydown', (event) => {
             
             // If a song is selected, play/pause
             if (selectedSong && currentVideoId) {
-                if (youtubePlayer && isPlaying) {
-                    youtubePlayer.pauseVideo();
-                } else if (youtubePlayer) {
-                    youtubePlayer.playVideo();
-                } else {
+                if (!youtubePlayer) {
                     initYouTubePlayer(currentVideoId);
                     setTimeout(() => {
                         if (youtubePlayer) {
                             youtubePlayer.playVideo();
                         }
                     }, 500);
+                } else {
+                    // Check if we need to load a different video
+                    const loadedVideoUrl = youtubePlayer.getVideoUrl();
+                    const loadedVideoId = loadedVideoUrl ? loadedVideoUrl.split('v=')[1]?.split('&')[0] : null;
+                    
+                    if (loadedVideoId !== currentVideoId) {
+                        // Load the new video
+                        youtubePlayer.loadVideoById(currentVideoId);
+                        // Wait a bit for the video to load before playing
+                        setTimeout(() => {
+                            youtubePlayer.playVideo();
+                        }, 500);
+                    } else {
+                        // Same video - just play/pause
+                        if (isPlaying) {
+                            youtubePlayer.pauseVideo();
+                        } else {
+                            youtubePlayer.playVideo();
+                        }
+                    }
                 }
             }
         }
