@@ -644,6 +644,27 @@ body::after {
     z-index: 5;
 }
 
+/* Thank You Screen Button - Match Screen 2 Position */
+#thankyou-screen .cta-button {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    width: auto;
+    z-index: 5;
+}
+
+/* Thank You Screen Content - Ensure title is centered */
+#thankyou-screen .content {
+    text-align: center;
+}
+
+#thankyou-screen .title {
+    white-space: normal;
+    text-align: center;
+}
+
 /* Tablet and Desktop Styles */
 @media (min-width: 768px) {
     .content {
