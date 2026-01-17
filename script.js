@@ -147,8 +147,8 @@ function selectSong(song) {
     previewArtist.textContent = song.artist;
     previewCard.style.display = 'flex';
     
-    // Hide progress initially
-    previewProgress.style.display = 'none';
+    // Hide progress initially (but keep space reserved)
+    previewProgress.classList.remove('is-playing');
     
     currentVideoId = song.videoId;
     
@@ -193,7 +193,7 @@ function stopPlayer() {
     
     isPlaying = false;
     previewPlayBtn.classList.remove('playing');
-    previewProgress.style.display = 'none';
+    previewProgress.classList.remove('is-playing');
     
     if (progressInterval) {
         clearInterval(progressInterval);
@@ -226,7 +226,7 @@ function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PLAYING) {
         isPlaying = true;
         previewPlayBtn.classList.add('playing');
-        previewProgress.style.display = 'block';
+        previewProgress.classList.add('is-playing');
         
         // Start progress update interval
         if (progressInterval) clearInterval(progressInterval);

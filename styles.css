@@ -693,6 +693,15 @@ body::after {
 
 .spotify-preview-progress {
     margin-top: 0.5rem;
+    min-height: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms ease, visibility 200ms ease;
+}
+
+.spotify-preview-progress.is-playing {
+    visibility: visible;
+    opacity: 1;
 }
 
 .spotify-preview-progress-bar {
