@@ -1,6 +1,11 @@
 // YouTube API Integration for Musical Confessional Booth
 // Provides autocomplete search, song preview, and submission tracking
 
+// YouTube API Configuration
+const CONFIG = {
+    YOUTUBE_API_KEY: 'AIzaSyB-5QJsq06s94gULJeU7zQk0neVzL4eGrM'
+};
+
 // Screen Management
 const screens = {
     welcome: document.getElementById('welcome-screen'),
