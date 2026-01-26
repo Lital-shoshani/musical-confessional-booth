@@ -194,7 +194,7 @@ body::after {
 
 #submission-screen .form-group label {
     display: block;
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 0.75rem;
@@ -211,7 +211,7 @@ body::after {
     border-radius: 8px;
     color: #BA9B65;
     transition: all 0.3s ease;
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-weight: 400;
     line-height: 1.5;
     box-sizing: border-box;
@@ -1003,7 +1003,7 @@ body::after {
 }
 
 .autocomplete-item-title {
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-size: 16px;
     font-weight: 400;
     color: #BA9B65;
@@ -1014,7 +1014,7 @@ body::after {
 }
 
 .autocomplete-item-artist {
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(186, 155, 101, 0.6);
@@ -1057,7 +1057,7 @@ body::after {
 }
 
 .spotify-preview-title {
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-size: 18px;
     font-weight: 400;
     color: #BA9B65;
@@ -1068,7 +1068,7 @@ body::after {
 }
 
 .spotify-preview-artist {
-    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
+    font-family: 'Mirza', serif;
     font-size: 15px;
     font-weight: 400;
     color: rgba(186, 155, 101, 0.65);
