@@ -237,7 +237,7 @@ body::after {
     width: 729px;
     max-width: 100%;
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .welcome-title {
@@ -270,7 +270,7 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
 }
 
 .separator-line {
@@ -303,7 +303,7 @@ body::after {
     font-weight: 400;
     line-height: normal;
     color: #7D6450;
-    margin: 0 0 3rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .welcome-highlight {
