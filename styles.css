@@ -335,7 +335,7 @@ body::after {
     width: 185px;
     height: 68px;
     border: 2px solid #BA9B65;
-    clip-path: path('M 15 0 L 170 0 L 185 4 Q 181 8 185 12 L 185 56 Q 181 60 185 64 L 170 68 L 15 68 L 0 64 Q 4 60 0 56 L 0 12 Q 4 8 0 4 Z');
+    clip-path: path('M 0 10 Q 10 10 10 0 L 175 0 Q 175 10 185 10 L 185 58 Q 175 58 175 68 L 10 68 Q 10 58 0 58 Z');
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -355,7 +355,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: path('M 12 0 L 162 0 L 174 3 Q 171 6 174 9 L 174 47 Q 171 50 174 53 L 162 56 L 12 56 L 0 53 Q 3 50 0 47 L 0 9 Q 3 6 0 3 Z');
+    clip-path: path('M 0 8 Q 8 8 8 0 L 166 0 Q 166 8 174 8 L 174 48 Q 166 48 166 56 L 8 56 Q 8 48 0 48 Z');
     transition: all 0.3s ease;
 }
 
