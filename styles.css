@@ -335,16 +335,7 @@ body::after {
     width: 185px;
     height: 68px;
     border: 2px solid #BA9B65;
-    clip-path: polygon(
-        8px 0,
-        calc(100% - 8px) 0,
-        100% 8px,
-        100% calc(100% - 8px),
-        calc(100% - 8px) 100%,
-        8px 100%,
-        0 calc(100% - 8px),
-        0 8px
-    );
+    clip-path: path('M 12 0 L 173 0 Q 185 0 185 12 L 185 56 Q 185 68 173 68 L 12 68 Q 0 68 0 56 L 0 12 Q 0 0 12 0 Z');
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -364,16 +355,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: polygon(
-        7px 0,
-        calc(100% - 7px) 0,
-        100% 7px,
-        100% calc(100% - 7px),
-        calc(100% - 7px) 100%,
-        7px 100%,
-        0 calc(100% - 7px),
-        0 7px
-    );
+    clip-path: path('M 11 0 L 163 0 Q 174 0 174 11 L 174 45 Q 174 56 163 56 L 11 56 Q 0 56 0 45 L 0 11 Q 0 0 11 0 Z');
     transition: all 0.3s ease;
 }
 
