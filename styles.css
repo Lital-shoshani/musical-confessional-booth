@@ -220,13 +220,13 @@ body::after {
     gap: 0;
 }
 
-/* Text Block Container - Positioned in upper portion */
+/* Text Block Container - Positioned for balanced vertical layout */
 .welcome-text-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -411,7 +411,7 @@ body::after {
     }
     
     .welcome-text-block {
-        top: 22%;
+        top: 32%;
         transform: translate(-50%, -50%);
     }
     
@@ -452,7 +452,7 @@ body::after {
     }
     
     .welcome-text-block {
-        top: 20%;
+        top: 30%;
         transform: translate(-50%, -50%);
     }
     
@@ -512,7 +512,7 @@ body::after {
     }
     
     .welcome-text-block {
-        top: 18%;
+        top: 28%;
         transform: translate(-50%, -50%);
     }
     
