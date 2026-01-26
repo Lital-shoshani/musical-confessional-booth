@@ -306,7 +306,7 @@ body::after {
 /* Gothic Button with Dual Layer Design */
 .welcome-button {
     position: relative;
-    width: 184.875px;
+    width: 185px;
     height: 68px;
     background: transparent;
     border: none;
@@ -341,8 +341,8 @@ body::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 174.115px;
-    height: 56.036px;
+    width: 174px;
+    height: 56px;
     background: #80020F;
     display: flex;
     align-items: center;
