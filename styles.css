@@ -335,8 +335,11 @@ body::after {
     width: 185px;
     height: 68px;
     border: 2px solid #BA9B65;
-    /* Scaled version of the same base shape: rectangle with quarter-circle concave corner cuts */
-    clip-path: path('M 0 10.6 Q 10.6 10.6 10.6 0 L 174.4 0 Q 174.4 10.6 185 10.6 L 185 57.4 Q 174.4 57.4 174.4 68 L 10.6 68 Q 10.6 57.4 0 57.4 Z');
+    /* EXACT SAME shape as button, scaled up (185/174 = 1.063× width, 68/56 = 1.214× height) */
+    clip-path: path('M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z');
+    /* Scale up to frame size while maintaining shape */
+    transform: scale(1.063, 1.214);
+    transform-origin: center;
     pointer-events: none;
     transition: all 0.3s ease;
 }
