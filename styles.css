@@ -101,95 +101,297 @@ body::after {
 
 /* Submission Screen - Match Welcome Screen Design */
 #submission-screen {
-    background: #1A1717;
+    background: radial-gradient(60.52% 60.52% at 50% 50%, #11101E 0%, #00050F 100%);
     padding: 0;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 12vh;
 }
 
-#submission-screen .content {
+#submission-screen::before,
+#submission-screen::after {
+    display: none;
+}
+
+.submission-content {
+    position: relative;
+    width: 100%;
     max-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 64px;
+    z-index: 2;
+    gap: 0;
 }
 
-#submission-screen #song-form {
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
+/* Text Block Container - Positioned for balanced vertical layout */
+.submission-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 15vh;
+    margin-bottom: 3rem;
 }
 
-#submission-screen .title {
+/* Title */
+.submission-title {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #BA9B65;
     text-align: center;
+    margin: 0 0 2rem 0;
 }
 
-#submission-screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid transparent;
-    background: linear-gradient(135deg, #FF0000 0%, #FFEA28 33%, #60DAFF 68%, #F31DDE 100%) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+/* Decorative Separator */
+.submission-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+
+/* Helper Text */
+.submission-helper-text {
+    font-family: 'Mirza', serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7D6450;
+    text-align: center;
+    margin: 0;
+}
+
+/* Form Styles for Submission Screen */
+#song-form {
+    width: 100%;
+    max-width: 540px;
+    margin: 0;
+    position: relative;
+}
+
+#submission-screen .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+#submission-screen .form-group label {
+    display: block;
+    font-family: 'Mirza', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: #BA9B65;
+    letter-spacing: 0.01em;
+}
+
+#submission-screen .form-group input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 16px;
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
+    border-radius: 8px;
+    color: #BA9B65;
+    transition: all 0.3s ease;
+    font-family: 'Mirza', serif;
+    font-weight: 400;
+}
+
+#submission-screen .form-group input::placeholder {
+    color: rgba(186, 155, 101, 0.3);
+}
+
+#submission-screen .form-group input:focus {
+    outline: none;
+    border-color: rgba(186, 155, 101, 0.4);
+    background: rgba(186, 155, 101, 0.08);
+}
+
+#submission-screen .error-message {
+    display: none;
+    font-family: 'Mirza', serif;
+    font-size: 14px;
+    color: #AF3030;
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+#submission-screen .error-message.show {
+    display: block;
+}
+
+/* Gothic Button for Submission Screen */
+.submission-button-container {
+    position: fixed;
+    bottom: 177px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 68px;
     z-index: 10;
 }
 
-#submission-screen::after {
-    content: '';
+.submission-button-svg {
+    width: 174px;
+    height: 56px;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.submission-button-hitbox {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle at 10% 10%, #E2725B 0%, #E2725B 8%, #E65638 15%, transparent 25%),
-        radial-gradient(circle at 92% 92%, #5B5CE2 0%, #5B5CE2 8%, #9333EA 15%, transparent 25%);
-    filter: blur(100px);
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Hover States for Submit Button */
+.submission-button-container:hover #submit-button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.submission-button-container:hover .submission-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
+}
+
+.submission-button-hitbox:focus-visible {
+    outline: 2px solid #BA9B65;
+    outline-offset: 4px;
+}
+
+.submission-button-container:active #submit-button-shape {
+    fill: #6B0110;
 }
 
 /* Thank You Screen - Match Welcome Screen Design */
 #thankyou-screen {
-    background: #1A1717;
+    background: radial-gradient(60.52% 60.52% at 50% 50%, #11101E 0%, #00050F 100%);
     padding: 0;
+    align-items: center;
+    justify-content: center;
 }
 
-#thankyou-screen::before {
-    content: '';
+#thankyou-screen::before,
+#thankyou-screen::after {
+    display: none;
+}
+
+.thankyou-content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 64px;
+    z-index: 2;
+    gap: 0;
+}
+
+/* Text Block Container */
+.thankyou-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid transparent;
-    background: linear-gradient(135deg, #FF0000 0%, #FFEA28 33%, #60DAFF 68%, #F31DDE 100%) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* Title */
+.thankyou-title {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #BA9B65;
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+/* Decorative Separator */
+.thankyou-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+
+/* Body Text */
+.thankyou-text {
+    font-family: 'Mirza', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7D6450;
+    text-align: center;
+    margin: 0;
+}
+
+/* Gothic Button for Thank You Screen */
+.thankyou-button-container {
+    position: fixed;
+    bottom: 177px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 68px;
     z-index: 10;
 }
 
-#thankyou-screen::after {
-    content: '';
+.thankyou-button-svg {
+    width: 174px;
+    height: 56px;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.thankyou-button-hitbox {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle at 10% 10%, #E2725B 0%, #E2725B 8%, #E65638 15%, transparent 25%),
-        radial-gradient(circle at 92% 92%, #5B5CE2 0%, #5B5CE2 8%, #9333EA 15%, transparent 25%);
-    filter: blur(100px);
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Hover States for Restart Button */
+.thankyou-button-container:hover #restart-button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.thankyou-button-container:hover .thankyou-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
+}
+
+.thankyou-button-hitbox:focus-visible {
+    outline: 2px solid #BA9B65;
+    outline-offset: 4px;
+}
+
+.thankyou-button-container:active #restart-button-shape {
+    fill: #6B0110;
 }
 
 /* Welcome Screen - Gothic Confessional Booth Design */
@@ -713,7 +915,7 @@ body::after {
     display: block;
 }
 
-/* Autocomplete Dropdown */
+/* Autocomplete Dropdown - Gothic Design */
 .autocomplete-wrapper {
     position: relative;
 }
@@ -726,13 +928,13 @@ body::after {
     right: 0;
     max-height: 300px;
     overflow-y: auto;
-    background: rgba(30, 30, 30, 0.98);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(17, 16, 30, 0.95);
+    border: 1px solid rgba(186, 155, 101, 0.3);
     border-top: none;
     border-radius: 0 0 8px 8px;
     z-index: 100;
     margin-top: -8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .autocomplete-dropdown.show {
@@ -743,10 +945,10 @@ body::after {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem 1rem;
+    padding: 0.875rem 1rem;
     cursor: pointer;
     transition: background 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(186, 155, 101, 0.1);
 }
 
 .autocomplete-item:last-child {
@@ -754,16 +956,17 @@ body::after {
 }
 
 .autocomplete-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(186, 155, 101, 0.1);
 }
 
 .autocomplete-item-thumb {
     flex-shrink: 0;
-    width: 48px;
-    height: 36px;
+    width: 56px;
+    height: 42px;
     border-radius: 4px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
 }
 
 .autocomplete-item-thumb img {
@@ -779,10 +982,10 @@ body::after {
 }
 
 .autocomplete-item-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Mirza', serif;
+    font-size: 16px;
     font-weight: 400;
-    color: #FFFFFF;
+    color: #BA9B65;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -790,40 +993,41 @@ body::after {
 }
 
 .autocomplete-item-artist {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Mirza', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.6);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Spotify Preview Card Placeholder */
+/* YouTube Preview Card - Gothic Design */
 .spotify-preview {
     display: flex;
-    margin-top: 0.75rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
+    border-radius: 8px;
     text-align: left;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .spotify-preview-album {
     flex-shrink: 0;
-    width: 90px;
-    height: 90px;
-    background: linear-gradient(135deg, rgba(231, 160, 168, 0.3) 0%, rgba(91, 92, 226, 0.3) 100%);
-    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+    background: rgba(186, 155, 101, 0.1);
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    opacity: 0.6;
+    opacity: 0.5;
+    border: 1px solid rgba(186, 155, 101, 0.2);
 }
 
 .spotify-preview-info {
@@ -832,10 +1036,10 @@ body::after {
 }
 
 .spotify-preview-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #FFFFFF;
+    font-family: 'Mirza', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #BA9B65;
     margin-bottom: 0.375rem;
     white-space: nowrap;
     overflow: hidden;
@@ -843,10 +1047,10 @@ body::after {
 }
 
 .spotify-preview-artist {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.65);
+    font-family: 'Mirza', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.65);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -863,7 +1067,7 @@ body::after {
 .spotify-preview-progress-bar {
     width: 100%;
     height: 4px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(186, 155, 101, 0.2);
     border-radius: 2px;
     overflow: hidden;
     margin-bottom: 0.25rem;
@@ -871,145 +1075,298 @@ body::after {
 
 .spotify-preview-progress-fill {
     height: 100%;
-    background: #FFFFFF;
+    background: #BA9B65;
     width: 0%;
     transition: width 0.1s linear;
 }
 
 .spotify-preview-time {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Mirza', serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.5);
 }
 
 .spotify-preview-play {
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    background: #FFFFFF;
-    border: none;
+    width: 48px;
+    height: 48px;
+    background: #80020F;
+    border: 2px solid #BA9B65;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .spotify-preview-play:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    background: #990215;
+    border-color: #D4AF37;
+    box-shadow: 0 4px 12px rgba(186, 155, 101, 0.3);
 }
 
 .spotify-preview-play::after {
     content: '▶';
-    font-size: 20px;
-    color: #000000;
-    margin-left: 3px;
+    font-size: 16px;
+    color: #BA9B65;
+    margin-left: 2px;
 }
 
 .spotify-preview-play.playing::after {
     content: '';
     margin-left: 0;
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     display: block;
     background: 
-        linear-gradient(#000 0 0),
-        linear-gradient(#000 0 0);
-    background-size: 5px 18px;
-    background-position: 0 0, 13px 0;
+        linear-gradient(#BA9B65 0 0),
+        linear-gradient(#BA9B65 0 0);
+    background-size: 4px 14px;
+    background-position: 0 0, 10px 0;
     background-repeat: no-repeat;
-    border-radius: 2px;
+    border-radius: 1px;
 }
 
-#song-form {
-    position: relative;
-}
-
-#song-form .cta-button {
-    position: fixed;
-    bottom: 64px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0;
-    width: auto;
-    z-index: 5;
-}
-
-/* Thank You Screen Button - Match Screen 2 Position */
-#thankyou-screen .cta-button {
-    position: fixed;
-    bottom: 64px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0;
-    width: auto;
-    z-index: 5;
-}
-
-/* Thank You Screen Content - Ensure title is centered */
-#thankyou-screen .content {
-    text-align: center;
-}
-
-#thankyou-screen .title {
-    white-space: normal;
-    text-align: center;
-}
-
-/* Tablet and Desktop Styles */
-@media (min-width: 768px) {
-    .content {
-        max-width: 540px;
-    }
-
-    .title {
-        margin-bottom: 2rem;
-        font-size: 56px;
-    }
-
-    .body-text {
-        margin-bottom: 1.75rem;
-    }
-
-    .accent-text {
-        margin-bottom: 3rem;
-    }
-}
-
-/* Responsive adjustments for submission screen button */
+/* Responsive adjustments for submission and thank you screens */
 @media (max-width: 1024px) {
-    #submission-screen #song-form .cta-button {
-        bottom: 56px;
-        left: 50%;
-        transform: translateX(-50%);
+    .submission-content,
+    .thankyou-content {
+        padding: 56px;
+    }
+    
+    .submission-text-block {
+        margin-top: 12vh;
+    }
+    
+    .submission-title,
+    .thankyou-title {
+        font-size: 42px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 18px;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 120px;
+        width: 165px;
+        height: 60px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 155px;
+        height: 50px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .title {
-        font-size: 38px;
-        white-space: normal;
+    .submission-content,
+    .thankyou-content {
+        padding: 48px 32px;
     }
     
-    #submission-screen #song-form .cta-button {
-        position: static;
-        width: 100%;
-        margin-top: 1rem;
+    .submission-text-block {
+        margin-top: 10vh;
+        margin-bottom: 2rem;
     }
     
-    #submission-screen {
-        padding-top: 6vh;
+    .thankyou-text-block {
+        top: 30%;
+    }
+    
+    .submission-title,
+    .thankyou-title {
+        font-size: 36px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .submission-separator,
+    .thankyou-separator {
+        margin-bottom: 1.5rem;
+    }
+    
+    .separator-line {
+        width: 150px;
+        height: 1px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 16px;
+    }
+    
+    #submission-screen .form-group label {
+        font-size: 16px;
+    }
+    
+    #submission-screen .form-group input {
+        font-size: 15px;
+        padding: 0.875rem 1rem;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 80px;
+        width: 150px;
+        height: 54px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 140px;
+        height: 45px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 18px;
+    }
+    
+    .spotify-preview {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .spotify-preview-album {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+    }
+    
+    .spotify-preview-title {
+        font-size: 16px;
+    }
+    
+    .spotify-preview-artist {
+        font-size: 14px;
+    }
+    
+    .spotify-preview-play {
+        width: 42px;
+        height: 42px;
     }
 }
 
 @media (max-width: 480px) {
-    .title {
-        font-size: 30px;
+    .submission-content,
+    .thankyou-content {
+        padding: 32px 24px;
     }
+    
+    .submission-text-block {
+        margin-top: 8vh;
+        margin-bottom: 1.5rem;
+    }
+    
+    .thankyou-text-block {
+        top: 28%;
+    }
+    
+    .submission-title,
+    .thankyou-title {
+        font-size: 28px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .submission-separator,
+    .thankyou-separator {
+        margin-bottom: 1.5rem;
+        gap: 4px;
+    }
+    
+    .separator-line {
+        width: 100px;
+    }
+    
+    .separator-diamond-small {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .separator-diamond-center {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 14px;
+    }
+    
+    #submission-screen .form-group label {
+        font-size: 14px;
+    }
+    
+    #submission-screen .form-group input {
+        font-size: 14px;
+        padding: 0.75rem;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 60px;
+        width: 140px;
+        height: 50px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 130px;
+        height: 42px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 16px;
+    }
+    
+    .spotify-preview {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .spotify-preview-album {
+        width: 100%;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .spotify-preview-play {
+        width: 48px;
+        height: 48px;
+        align-self: center;
+    }
+}
+
+/* OLD STYLES TO REMOVE - Keeping only for reference, will be cleaned up */
+/* These can be deleted if not used elsewhere */
+.title {
+    display: none; /* Old style, replaced by specific screen titles */
+}
+
+.helper-text {
+    display: none; /* Old style, replaced by specific screen text */
+}
+
+.body-text {
+    display: none; /* Old style, replaced by specific screen text */
+}
+
+.cta-button {
+    display: none; /* Old style, replaced by Gothic buttons */
 }
 
 /* Accessibility - Reduced Motion */

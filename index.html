@@ -62,17 +62,39 @@
 
     <!-- Song Submission Screen -->
     <section id="submission-screen" class="screen">
-        <div class="content">
-            <h2 class="title">Choose your secret song</h2>
-            <p class="helper-text">Pick the song you keep most to yourself.<br>One that's a little embarrassing, a little unexpected, or reveals another side of you.</p>
+        <div class="submission-content">
+            <div class="submission-text-block">
+                <h2 class="submission-title">Confess your secret song</h2>
+                
+                <div class="submission-separator">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="219" height="1" viewBox="0 0 219 1" fill="none" class="separator-line">
+                        <path d="M0 0.420212C58.22 0.320212 147.99 -0.349788 205.25 0.240212L218.93 0.420212V0.520212L205.25 0.700212C148.41 1.19021 57.54 0.820212 0 0.420212Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" class="separator-diamond-small">
+                        <path d="M4.66645 2.33344L2.33301 0L-0.000444492 2.33345L2.333 4.6669L4.66645 2.33344Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" class="separator-diamond-center">
+                        <path d="M9.91385 4.95681L4.95703 0L0.000212637 4.95682L4.95703 9.91363L9.91385 4.95681Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" class="separator-diamond-small">
+                        <path d="M4.66645 2.33344L2.33301 0L-0.000444492 2.33345L2.333 4.6669L4.66645 2.33344Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="219" height="1" viewBox="0 0 219 1" fill="none" class="separator-line">
+                        <path d="M0 0.420212C58.22 0.320212 147.99 -0.349788 205.25 0.240212L218.93 0.420212V0.520212L205.25 0.700212C148.41 1.19021 57.54 0.820212 0 0.420212Z" fill="#B08C4E"></path>
+                    </svg>
+                </div>
+                
+                <p class="submission-helper-text">Tell us the song you've been keeping to yourself</p>
+            </div>
+            
             <form id="song-form">
                 <div class="form-group">
-                    <label for="song-input">Song + artist</label>
+                    <label for="song-input">Search for a song</label>
                     <div class="autocomplete-wrapper">
-                        <input type="text" id="song-input" name="song-input" placeholder="e.g., Toxic — Britney Spears" autocomplete="off" required>
+                        <input type="text" id="song-input" name="song-input" placeholder="Type song name or artist..." autocomplete="off" required>
                         <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
                     </div>
-                    <span class="error-message" id="error-message">Quick note — please enter a song and an artist to continue.</span>
+                    <span class="error-message" id="error-message">Please select a song from the list to continue.</span>
                 </div>
                 
                 <!-- YouTube Preview Card -->
@@ -93,18 +115,58 @@
                 
                 <!-- Hidden YouTube Player -->
                 <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px;"></div>
-                
-                <button type="submit" class="cta-button">Send the secret</button>
             </form>
+            
+            <div class="submission-button-container">
+                <svg class="submission-button-svg" viewBox="0 0 174 56" xmlns="http://www.w3.org/2000/svg">
+                    <path id="submit-button-shape" d="M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z" 
+                          fill="#80020F" 
+                          stroke="#BA9B65" 
+                          stroke-width="2"/>
+                    <text id="submit-button-text" x="87" y="32" class="button-text" text-anchor="middle" dominant-baseline="middle">Send confession</text>
+                </svg>
+                <button type="submit" form="song-form" class="submission-button-hitbox" aria-label="Send confession"></button>
+            </div>
         </div>
     </section>
 
     <!-- Thank You Screen -->
     <section id="thankyou-screen" class="screen">
-        <div class="content">
-            <h2 class="title">Thank you!<br>Your secret is safe with us.</h2>
-            <p class="body-text">You can step out now, hope you enjoyed it :)</p>
-            <button id="restart-btn" class="cta-button">Back to start</button>
+        <div class="thankyou-content">
+            <div class="thankyou-text-block">
+                <h2 class="thankyou-title">Your confession is received</h2>
+                
+                <div class="thankyou-separator">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="219" height="1" viewBox="0 0 219 1" fill="none" class="separator-line">
+                        <path d="M0 0.420212C58.22 0.320212 147.99 -0.349788 205.25 0.240212L218.93 0.420212V0.520212L205.25 0.700212C148.41 1.19021 57.54 0.820212 0 0.420212Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" class="separator-diamond-small">
+                        <path d="M4.66645 2.33344L2.33301 0L-0.000444492 2.33345L2.333 4.6669L4.66645 2.33344Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" class="separator-diamond-center">
+                        <path d="M9.91385 4.95681L4.95703 0L0.000212637 4.95682L4.95703 9.91363L9.91385 4.95681Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none" class="separator-diamond-small">
+                        <path d="M4.66645 2.33344L2.33301 0L-0.000444492 2.33345L2.333 4.6669L4.66645 2.33344Z" fill="#B08C4E"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="219" height="1" viewBox="0 0 219 1" fill="none" class="separator-line">
+                        <path d="M0 0.420212C58.22 0.320212 147.99 -0.349788 205.25 0.240212L218.93 0.420212V0.520212L205.25 0.700212C148.41 1.19021 57.54 0.820212 0 0.420212Z" fill="#B08C4E"></path>
+                    </svg>
+                </div>
+                
+                <p class="thankyou-text">It will live on in the jukebox of confessions</p>
+            </div>
+            
+            <div class="thankyou-button-container">
+                <svg class="thankyou-button-svg" viewBox="0 0 174 56" xmlns="http://www.w3.org/2000/svg">
+                    <path id="restart-button-shape" d="M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z" 
+                          fill="#80020F" 
+                          stroke="#BA9B65" 
+                          stroke-width="2"/>
+                    <text id="restart-button-text" x="87" y="32" class="button-text" text-anchor="middle" dominant-baseline="middle">Return to start</text>
+                </svg>
+                <button id="restart-btn" class="thankyou-button-hitbox" aria-label="Return to start"></button>
+            </div>
         </div>
     </section>
 
