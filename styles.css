@@ -173,6 +173,7 @@ body::after {
     max-width: 540px;
     margin: 0;
     position: relative;
+    z-index: 5;
 }
 
 #submission-screen .form-group {
@@ -234,7 +235,8 @@ body::after {
     transform: translateX(-50%);
     width: 185px;
     height: 68px;
-    z-index: 10;
+    z-index: 3;
+    pointer-events: none;
 }
 
 .submission-button-svg {
@@ -242,6 +244,7 @@ body::after {
     height: 56px;
     display: block;
     transition: filter 0.3s ease;
+    pointer-events: auto;
 }
 
 .submission-button-hitbox {
@@ -254,6 +257,7 @@ body::after {
     border: none;
     cursor: pointer;
     opacity: 0;
+    pointer-events: auto;
 }
 
 /* Hover States for Submit Button */
@@ -353,7 +357,8 @@ body::after {
     transform: translateX(-50%);
     width: 185px;
     height: 68px;
-    z-index: 10;
+    z-index: 3;
+    pointer-events: none;
 }
 
 .thankyou-button-svg {
@@ -361,6 +366,7 @@ body::after {
     height: 56px;
     display: block;
     transition: filter 0.3s ease;
+    pointer-events: auto;
 }
 
 .thankyou-button-hitbox {
@@ -373,6 +379,7 @@ body::after {
     border: none;
     cursor: pointer;
     opacity: 0;
+    pointer-events: auto;
 }
 
 /* Hover States for Restart Button */
