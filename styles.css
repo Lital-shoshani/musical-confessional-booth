@@ -131,7 +131,7 @@ body::after {
     align-items: center;
     justify-content: flex-start;
     padding: 64px;
-    padding-bottom: 340px; /* Increased to ensure clear space above button */
+    padding-bottom: 360px; /* Increased to ensure clear space above button */
     z-index: 2;
     gap: 0;
 }
@@ -142,8 +142,8 @@ body::after {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 8vh;
-    margin-bottom: 3rem;
+    margin-top: 4vh;
+    margin-bottom: 2.5rem;
 }
 
 /* Title */
@@ -194,7 +194,7 @@ body::after {
 
 #submission-screen .form-group label {
     display: block;
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 0.75rem;
@@ -211,8 +211,10 @@ body::after {
     border-radius: 8px;
     color: #BA9B65;
     transition: all 0.3s ease;
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-weight: 400;
+    line-height: 1.5;
+    box-sizing: border-box;
 }
 
 #submission-screen .form-group input::placeholder {
@@ -1001,7 +1003,7 @@ body::after {
 }
 
 .autocomplete-item-title {
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #BA9B65;
@@ -1012,7 +1014,7 @@ body::after {
 }
 
 .autocomplete-item-artist {
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(186, 155, 101, 0.6);
@@ -1055,7 +1057,7 @@ body::after {
 }
 
 .spotify-preview-title {
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: #BA9B65;
@@ -1066,7 +1068,7 @@ body::after {
 }
 
 .spotify-preview-artist {
-    font-family: 'Mirza', serif;
+    font-family: "Open Sans Hebrew", "Open Sans", Arial, sans-serif;
     font-size: 15px;
     font-weight: 400;
     color: rgba(186, 155, 101, 0.65);
@@ -1158,7 +1160,7 @@ body::after {
     }
     
     .submission-text-block {
-        margin-top: 6vh;
+        margin-top: 3vh;
     }
     
     .submission-title,
@@ -1197,7 +1199,7 @@ body::after {
     }
     
     .submission-text-block {
-        margin-top: 5vh;
+        margin-top: 2.5vh;
         margin-bottom: 2rem;
     }
     
@@ -1285,7 +1287,7 @@ body::after {
     }
     
     .submission-text-block {
-        margin-top: 4vh;
+        margin-top: 2vh;
         margin-bottom: 1.5rem;
     }
     
