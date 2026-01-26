@@ -170,7 +170,7 @@ body::after {
 /* Helper Text */
 .submission-helper-text {
     font-family: 'Mirza', serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
     line-height: normal;
     color: #7D6450;
@@ -1170,7 +1170,7 @@ body::after {
     
     .submission-helper-text,
     .thankyou-text {
-        font-size: 18px;
+        font-size: 20px;
     }
     
     .submission-button-container,
@@ -1225,7 +1225,7 @@ body::after {
     
     .submission-helper-text,
     .thankyou-text {
-        font-size: 16px;
+        font-size: 18px;
     }
     
     #submission-screen .form-group label {
@@ -1323,7 +1323,7 @@ body::after {
     
     .submission-helper-text,
     .thankyou-text {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     #submission-screen .form-group label {
