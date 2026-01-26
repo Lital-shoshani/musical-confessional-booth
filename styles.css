@@ -316,28 +316,24 @@ body::after {
 }
 
 /* Gothic Button with Dual Layer Design */
-.welcome-button {
+/* Button Container - Holds both frame and button */
+.welcome-button-container {
     position: fixed;
     bottom: 177px;
     left: 50%;
     transform: translateX(-50%);
     width: 185px;
     height: 68px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.3s ease;
     z-index: 10;
 }
 
-.welcome-button::before {
-    content: '';
+/* Outer Decorative Frame - Stroke only, no fill */
+.button-frame {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 185px;
+    height: 68px;
     border: 2px solid #BA9B65;
     clip-path: polygon(
         8px 0,
@@ -350,9 +346,11 @@ body::after {
         0 8px
     );
     pointer-events: none;
+    transition: all 0.3s ease;
 }
 
-.button-inner {
+/* Inner Button Body - Solid fill, clickable */
+.welcome-button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -360,6 +358,9 @@ body::after {
     width: 174px;
     height: 56px;
     background: #80020F;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -376,6 +377,7 @@ body::after {
     transition: all 0.3s ease;
 }
 
+/* Button Text */
 .button-text {
     font-family: 'Grenze Gotisch', serif;
     font-size: 24px;
@@ -385,22 +387,26 @@ body::after {
     color: #BA9B65;
 }
 
-.welcome-button:hover .button-inner {
+/* Hover States */
+.welcome-button:hover {
     background: #990215;
-    box-shadow: 0 0 20px rgba(186, 155, 101, 0.3);
+    box-shadow: 0 0 15px rgba(186, 155, 101, 0.2);
 }
 
-.welcome-button:hover::before {
+.welcome-button:hover + .button-frame,
+.welcome-button-container:hover .button-frame {
     border-color: #D4AF37;
-    box-shadow: 0 0 20px rgba(186, 155, 101, 0.2);
+    box-shadow: 0 0 15px rgba(186, 155, 101, 0.15);
 }
 
+/* Focus State */
 .welcome-button:focus-visible {
     outline: 2px solid #BA9B65;
     outline-offset: 4px;
 }
 
-.welcome-button:active .button-inner {
+/* Active State */
+.welcome-button:active {
     background: #6B0110;
 }
 
@@ -430,13 +436,18 @@ body::after {
         font-size: 20px;
     }
     
-    .welcome-button {
+    .welcome-button-container {
         bottom: 120px;
         width: 165px;
         height: 60px;
     }
     
-    .button-inner {
+    .button-frame {
+        width: 165px;
+        height: 60px;
+    }
+    
+    .welcome-button {
         width: 155px;
         height: 50px;
     }
@@ -490,13 +501,18 @@ body::after {
         font-size: 18px;
     }
     
-    .welcome-button {
+    .welcome-button-container {
         bottom: 80px;
         width: 150px;
         height: 54px;
     }
     
-    .button-inner {
+    .button-frame {
+        width: 150px;
+        height: 54px;
+    }
+    
+    .welcome-button {
         width: 140px;
         height: 45px;
     }
@@ -558,13 +574,18 @@ body::after {
         font-size: 16px;
     }
     
-    .welcome-button {
+    .welcome-button-container {
         bottom: 60px;
         width: 140px;
         height: 50px;
     }
     
-    .button-inner {
+    .button-frame {
+        width: 140px;
+        height: 50px;
+    }
+    
+    .welcome-button {
         width: 130px;
         height: 42px;
     }
