@@ -225,7 +225,7 @@ body::after {
     width: 729px;
     max-width: 100%;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
 }
 
 .welcome-title {
@@ -258,7 +258,7 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
 }
 
 .separator-line {
@@ -282,7 +282,7 @@ body::after {
     width: 569px;
     max-width: 100%;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 0;
 }
 
 .welcome-subtitle {
@@ -291,7 +291,7 @@ body::after {
     font-weight: 400;
     line-height: normal;
     color: #7D6450;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 3rem 0;
 }
 
 .welcome-highlight {
@@ -305,7 +305,10 @@ body::after {
 
 /* Gothic Button with Dual Layer Design */
 .welcome-button {
-    position: relative;
+    position: fixed;
+    bottom: 177px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 185px;
     height: 68px;
     background: transparent;
@@ -313,6 +316,7 @@ body::after {
     cursor: pointer;
     padding: 0;
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .welcome-button::before {
@@ -410,6 +414,7 @@ body::after {
     }
     
     .welcome-button {
+        bottom: 120px;
         width: 165px;
         height: 60px;
     }
@@ -464,6 +469,7 @@ body::after {
     }
     
     .welcome-button {
+        bottom: 80px;
         width: 150px;
         height: 54px;
     }
@@ -526,6 +532,7 @@ body::after {
     }
     
     .welcome-button {
+        bottom: 60px;
         width: 140px;
         height: 50px;
     }
