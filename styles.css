@@ -327,33 +327,13 @@ body::after {
     z-index: 10;
 }
 
-/* Outer Decorative Frame - Stroke only, no fill with CONCAVE corners */
-.button-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 185px;
-    height: 68px;
-    border: 2px solid #BA9B65;
-    /* EXACT SAME shape as button, scaled up (185/174 = 1.063× width, 68/56 = 1.214× height) */
-    clip-path: path('M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z');
-    /* Scale up to frame size while maintaining shape */
-    transform: scale(1.063, 1.214);
-    transform-origin: center;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-/* Inner Button Body - Solid fill, clickable with CONCAVE corners */
+/* Button - Red fill with gold stroke and CONCAVE corners */
 .welcome-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 174px;
     height: 56px;
     background: #80020F;
-    border: none;
+    border: 2px solid #BA9B65;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -361,7 +341,7 @@ body::after {
     justify-content: center;
     /* Base shape: rectangle with quarter-circle concave corner cuts */
     clip-path: path('M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z');
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 /* Button Text */
@@ -377,13 +357,8 @@ body::after {
 /* Hover States */
 .welcome-button:hover {
     background: #990215;
-    box-shadow: 0 0 15px rgba(186, 155, 101, 0.2);
-}
-
-.welcome-button:hover + .button-frame,
-.welcome-button-container:hover .button-frame {
     border-color: #D4AF37;
-    box-shadow: 0 0 15px rgba(186, 155, 101, 0.15);
+    box-shadow: 0 0 15px rgba(186, 155, 101, 0.2);
 }
 
 /* Focus State */
@@ -425,11 +400,6 @@ body::after {
     
     .welcome-button-container {
         bottom: 120px;
-        width: 165px;
-        height: 60px;
-    }
-    
-    .button-frame {
         width: 165px;
         height: 60px;
     }
@@ -490,11 +460,6 @@ body::after {
     
     .welcome-button-container {
         bottom: 80px;
-        width: 150px;
-        height: 54px;
-    }
-    
-    .button-frame {
         width: 150px;
         height: 54px;
     }
@@ -563,11 +528,6 @@ body::after {
     
     .welcome-button-container {
         bottom: 60px;
-        width: 140px;
-        height: 50px;
-    }
-    
-    .button-frame {
         width: 140px;
         height: 50px;
     }
