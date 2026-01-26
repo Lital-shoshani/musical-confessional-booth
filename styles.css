@@ -131,7 +131,7 @@ body::after {
     align-items: center;
     justify-content: flex-start;
     padding: 64px;
-    padding-bottom: var(--button-area-height);
+    padding-bottom: 320px; /* Increased from 260px to create more space above button */
     z-index: 2;
     gap: 0;
 }
@@ -149,7 +149,7 @@ body::after {
 /* Title */
 .submission-title {
     font-family: 'Grenze Gotisch', serif;
-    font-size: 48px;
+    font-size: 68px;
     font-weight: 400;
     line-height: 1.3;
     color: #BA9B65;
@@ -181,7 +181,7 @@ body::after {
 #song-form {
     width: 100%;
     max-width: 540px;
-    margin: 0;
+    margin: 0 0 3rem 0; /* Added bottom margin to create space above button */
     position: relative;
     z-index: 5;
 }
@@ -1162,7 +1162,7 @@ body::after {
     
     .submission-title,
     .thankyou-title {
-        font-size: 42px;
+        font-size: 54px;
     }
     
     .submission-helper-text,
@@ -1206,7 +1206,7 @@ body::after {
     
     .submission-title,
     .thankyou-title {
-        font-size: 36px;
+        font-size: 48px;
         margin-bottom: 1.5rem;
     }
     
@@ -1294,7 +1294,7 @@ body::after {
     
     .submission-title,
     .thankyou-title {
-        font-size: 28px;
+        font-size: 36px;
         margin-bottom: 1.5rem;
     }
     
