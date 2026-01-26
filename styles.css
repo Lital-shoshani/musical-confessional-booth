@@ -328,20 +328,23 @@ body::after {
 }
 
 /* Button - Red fill with gold stroke and CONCAVE corners */
-.welcome-button {
-    position: relative;
+.welcome-button-svg {
     width: 174px;
     height: 56px;
-    background: #80020F;
-    border: 2px solid #BA9B65;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.welcome-button-hitbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Base shape: rectangle with quarter-circle concave corner cuts */
-    clip-path: path('M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z');
-    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
 }
 
 /* Button Text */
@@ -349,27 +352,30 @@ body::after {
     font-family: 'Grenze Gotisch', serif;
     font-size: 24px;
     font-weight: 600;
-    text-align: center;
-    line-height: normal;
-    color: #BA9B65;
+    fill: #BA9B65;
+    pointer-events: none;
+    user-select: none;
 }
 
 /* Hover States */
-.welcome-button:hover {
-    background: #990215;
-    border-color: #D4AF37;
-    box-shadow: 0 0 15px rgba(186, 155, 101, 0.2);
+.welcome-button-container:hover #button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.welcome-button-container:hover .welcome-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
 }
 
 /* Focus State */
-.welcome-button:focus-visible {
+.welcome-button-hitbox:focus-visible {
     outline: 2px solid #BA9B65;
     outline-offset: 4px;
 }
 
 /* Active State */
-.welcome-button:active {
-    background: #6B0110;
+.welcome-button-container:active #button-shape {
+    fill: #6B0110;
 }
 
 /* Responsive adjustments for welcome screen */
@@ -404,7 +410,7 @@ body::after {
         height: 60px;
     }
     
-    .welcome-button {
+    .welcome-button-svg {
         width: 155px;
         height: 50px;
     }
@@ -464,7 +470,7 @@ body::after {
         height: 54px;
     }
     
-    .welcome-button {
+    .welcome-button-svg {
         width: 140px;
         height: 45px;
     }
@@ -532,7 +538,7 @@ body::after {
         height: 50px;
     }
     
-    .welcome-button {
+    .welcome-button-svg {
         width: 130px;
         height: 42px;
     }

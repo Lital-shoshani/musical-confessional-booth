@@ -48,9 +48,14 @@
             </div>
             
             <div class="welcome-button-container">
-                <button id="start-btn" class="welcome-button">
-                    <span class="button-text">To confess</span>
-                </button>
+                <svg class="welcome-button-svg" viewBox="0 0 174 56" xmlns="http://www.w3.org/2000/svg">
+                    <path id="button-shape" d="M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z" 
+                          fill="#80020F" 
+                          stroke="#BA9B65" 
+                          stroke-width="2"/>
+                    <text id="button-text" x="87" y="33" class="button-text" text-anchor="middle">To confess</text>
+                </svg>
+                <button id="start-btn" class="welcome-button-hitbox" aria-label="To confess"></button>
             </div>
         </div>
     </section>
