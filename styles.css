@@ -327,7 +327,7 @@ body::after {
     z-index: 10;
 }
 
-/* Outer Decorative Frame - Stroke only, no fill */
+/* Outer Decorative Frame - Stroke only, no fill with CONCAVE corners */
 .button-frame {
     position: absolute;
     top: 0;
@@ -335,12 +335,12 @@ body::after {
     width: 185px;
     height: 68px;
     border: 2px solid #BA9B65;
-    clip-path: path('M 12 0 L 173 0 Q 185 0 185 12 L 185 56 Q 185 68 173 68 L 12 68 Q 0 68 0 56 L 0 12 Q 0 0 12 0 Z');
+    clip-path: path('M 15 0 L 170 0 L 185 4 Q 181 8 185 12 L 185 56 Q 181 60 185 64 L 170 68 L 15 68 L 0 64 Q 4 60 0 56 L 0 12 Q 4 8 0 4 Z');
     pointer-events: none;
     transition: all 0.3s ease;
 }
 
-/* Inner Button Body - Solid fill, clickable */
+/* Inner Button Body - Solid fill, clickable with CONCAVE corners */
 .welcome-button {
     position: absolute;
     top: 50%;
@@ -355,7 +355,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: path('M 11 0 L 163 0 Q 174 0 174 11 L 174 45 Q 174 56 163 56 L 11 56 Q 0 56 0 45 L 0 11 Q 0 0 11 0 Z');
+    clip-path: path('M 12 0 L 162 0 L 174 3 Q 171 6 174 9 L 174 47 Q 171 50 174 53 L 162 56 L 12 56 L 0 53 Q 3 50 0 47 L 0 9 Q 3 6 0 3 Z');
     transition: all 0.3s ease;
 }
 
