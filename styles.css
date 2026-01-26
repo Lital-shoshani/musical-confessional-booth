@@ -220,15 +220,15 @@ body::after {
     gap: 0;
 }
 
-/* Text Block Container - Centered group shifted upward */
+/* Text Block Container - Positioned in upper portion */
 .welcome-text-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -50%);
     width: 100%;
 }
 
@@ -411,7 +411,8 @@ body::after {
     }
     
     .welcome-text-block {
-        transform: translate(-50%, -58%);
+        top: 22%;
+        transform: translate(-50%, -50%);
     }
     
     .welcome-title .title-line-1 {
@@ -451,7 +452,8 @@ body::after {
     }
     
     .welcome-text-block {
-        transform: translate(-50%, -56%);
+        top: 20%;
+        transform: translate(-50%, -50%);
     }
     
     .welcome-title-block {
@@ -510,7 +512,8 @@ body::after {
     }
     
     .welcome-text-block {
-        transform: translate(-50%, -54%);
+        top: 18%;
+        transform: translate(-50%, -50%);
     }
     
     .welcome-title-block {
