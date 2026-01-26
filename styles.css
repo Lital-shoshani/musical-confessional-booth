@@ -335,7 +335,8 @@ body::after {
     width: 185px;
     height: 68px;
     border: 2px solid #BA9B65;
-    clip-path: path('M 0 10 Q 10 10 10 0 L 175 0 Q 175 10 185 10 L 185 58 Q 175 58 175 68 L 10 68 Q 10 58 0 58 Z');
+    /* Scaled version of the same base shape: rectangle with quarter-circle concave corner cuts */
+    clip-path: path('M 0 10.6 Q 10.6 10.6 10.6 0 L 174.4 0 Q 174.4 10.6 185 10.6 L 185 57.4 Q 174.4 57.4 174.4 68 L 10.6 68 Q 10.6 57.4 0 57.4 Z');
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -355,7 +356,8 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: path('M 0 8 Q 8 8 8 0 L 166 0 Q 166 8 174 8 L 174 48 Q 166 48 166 56 L 8 56 Q 8 48 0 48 Z');
+    /* Base shape: rectangle with quarter-circle concave corner cuts */
+    clip-path: path('M 0 10 Q 10 10 10 0 L 164 0 Q 164 10 174 10 L 174 46 Q 164 46 164 56 L 10 56 Q 10 46 0 46 Z');
     transition: all 0.3s ease;
 }
 
