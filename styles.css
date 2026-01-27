@@ -1,0 +1,1451 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark: #151418;
+    --color-text: #FFFFFF;
+    --color-text-muted: #FFFFFF;
+    --color-accent-pink: #E7A0A8;
+    --color-button-bg: #FFFFFF;
+    --color-button-text: #1a1a1a;
+    
+    /* Gothic design system colors */
+    --gothic-gold: #BA9B65;
+    --gothic-gold-dark: #7D6450;
+    --gothic-red: #AF3030;
+    --gothic-separator: #B08C4E;
+    
+    /* Layout constants */
+    --button-area-height: 260px;
+    
+    /* Gradient blob colors */
+    --color-blob-1: #d946ef; /* magenta */
+    --color-blob-2: #8b5cf6; /* purple */
+    --color-blob-3: #3b82f6; /* blue */
+    --color-blob-4: #f59e0b; /* amber */
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--color-text);
+    overflow: hidden;
+    position: relative;
+    background: var(--color-dark);
+    line-height: 1.6;
+}
+
+/* Animated Gradient Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: 
+        radial-gradient(circle at 15% 25%, var(--color-blob-1) 0%, transparent 35%),
+        radial-gradient(circle at 85% 55%, var(--color-blob-2) 0%, transparent 40%),
+        radial-gradient(circle at 45% 75%, var(--color-blob-3) 0%, transparent 38%),
+        radial-gradient(circle at 70% 15%, var(--color-blob-4) 0%, transparent 35%);
+    opacity: 0.35;
+    filter: blur(60px);
+    mix-blend-mode: screen;
+    animation: floatBlobs 40s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Vignette overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(21, 20, 24, 0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatBlobs {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        filter: blur(60px) hue-rotate(0deg);
+    }
+    25% {
+        transform: translate(8%, 6%) scale(1.1) rotate(5deg);
+        filter: blur(65px) hue-rotate(15deg);
+    }
+    50% {
+        transform: translate(-6%, 12%) scale(0.95) rotate(-5deg);
+        filter: blur(70px) hue-rotate(30deg);
+    }
+    75% {
+        transform: translate(10%, -8%) scale(1.05) rotate(8deg);
+        filter: blur(65px) hue-rotate(15deg);
+    }
+}
+
+/* Screen Sections */
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    padding: 2rem;
+    z-index: 2;
+}
+
+/* Submission Screen - Match Welcome Screen Design */
+#submission-screen {
+    background: radial-gradient(60.52% 60.52% at 50% 50%, #11101E 0%, #00050F 100%);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+#submission-screen::before,
+#submission-screen::after {
+    display: none;
+}
+
+.submission-content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 64px;
+    padding-bottom: 380px; /* Increased from 360px to ensure dropdown stays above button */
+    z-index: 2;
+    gap: 0;
+}
+
+/* Text Block Container - Positioned for balanced vertical layout */
+.submission-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 0.25rem; /* Further reduced to 0.25rem (4px) for target ~8-12px total gap */
+}
+
+/* Title */
+.submission-title {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #BA9B65;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    white-space: nowrap;
+}
+
+/* Decorative Separator */
+.submission-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+
+/* Helper Text */
+.submission-helper-text {
+    font-family: 'Mirza', serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7D6450;
+    text-align: center;
+    margin: 0 0 1rem 0; /* Add 1rem margin-bottom for 16px gap */
+    max-width: 850px;
+}
+
+/* Form Styles for Submission Screen */
+#song-form {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 0 2rem 0; /* Space below form */
+    margin-top: 0.25rem; /* Set to 0.25rem (4px) for target ~8-12px total gap */
+    position: relative;
+    z-index: 5;
+}
+
+#submission-screen .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+#submission-screen .form-group label {
+    display: block;
+    font-family: 'Mirza', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 0.375rem; /* Reduced from 0.75rem for tighter spacing */
+    color: #BA9B65;
+    letter-spacing: 0.01em;
+}
+
+#submission-screen .form-group input {
+    width: 100%;
+    padding: 0 1rem; /* Horizontal padding only */
+    font-size: 17px; /* Increased from 16px */
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
+    border-radius: 8px;
+    color: #BA9B65;
+    transition: all 0.3s ease;
+    font-family: 'Mirza', serif;
+    font-weight: 400;
+    line-height: 50px; /* Match height for perfect vertical centering */
+    height: 50px; /* Fixed height for consistent centering */
+    box-sizing: border-box;
+    vertical-align: middle; /* Ensure vertical centering */
+    text-align: left; /* Ensure text starts from left */
+}
+
+#submission-screen .form-group input::placeholder {
+    color: rgba(186, 155, 101, 0.3);
+}
+
+#submission-screen .form-group input:focus {
+    outline: none;
+    border-color: rgba(186, 155, 101, 0.4);
+    background: rgba(186, 155, 101, 0.08);
+}
+
+#submission-screen .error-message {
+    display: none;
+    font-family: 'Mirza', serif;
+    font-size: 14px;
+    color: #AF3030;
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+#submission-screen .error-message.show {
+    display: block;
+}
+
+/* Gothic Button for Submission Screen */
+.submission-button-container {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 68px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.submission-button-svg {
+    width: 174px;
+    height: 56px;
+    display: block;
+    transition: filter 0.3s ease;
+    pointer-events: auto;
+}
+
+.submission-button-hitbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+/* Hover States for Submit Button */
+.submission-button-container:hover #submit-button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.submission-button-container:hover .submission-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
+}
+
+.submission-button-hitbox:focus-visible {
+    outline: 2px solid #BA9B65;
+    outline-offset: 4px;
+}
+
+.submission-button-container:active #submit-button-shape {
+    fill: #6B0110;
+}
+
+/* Ensure submit button text is properly sized and centered */
+#submit-button-text {
+    font-size: 22px; /* Reduced to match Screen 1 button text */
+}
+
+/* Thank You Screen - Match Welcome Screen Design */
+#thankyou-screen {
+    background: radial-gradient(60.52% 60.52% at 50% 50%, #11101E 0%, #00050F 100%);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+#thankyou-screen::before,
+#thankyou-screen::after {
+    display: none;
+}
+
+.thankyou-content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 64px;
+    padding-bottom: var(--button-area-height);
+    z-index: 2;
+    gap: 0;
+}
+
+/* Text Block Container */
+.thankyou-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* Title Block Container */
+.thankyou-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Small Title */
+.thankyou-small-title {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 71px;
+    color: #BA9B65;
+    text-align: center;
+    margin: 0;
+}
+
+/* Main Title */
+.thankyou-main-title {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 71px;
+    color: #BA9B65;
+    text-align: center;
+    margin: 0;
+}
+
+/* Decorative Separator */
+.thankyou-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+
+/* Body Text */
+.thankyou-text {
+    font-family: 'Mirza', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7D6450;
+    text-align: center;
+    margin: 0;
+}
+
+/* Gothic Button for Thank You Screen */
+.thankyou-button-container {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 68px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.thankyou-button-svg {
+    width: 174px;
+    height: 56px;
+    display: block;
+    transition: filter 0.3s ease;
+    pointer-events: auto;
+}
+
+.thankyou-button-hitbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+/* Hover States for Restart Button */
+.thankyou-button-container:hover #restart-button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.thankyou-button-container:hover .thankyou-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
+}
+
+.thankyou-button-hitbox:focus-visible {
+    outline: 2px solid #BA9B65;
+    outline-offset: 4px;
+}
+
+.thankyou-button-container:active #restart-button-shape {
+    fill: #6B0110;
+}
+
+/* Welcome Screen - Gothic Confessional Booth Design */
+#welcome-screen {
+    background: radial-gradient(60.52% 60.52% at 50% 50%, #11101E 0%, #00050F 100%);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+#welcome-screen::before,
+#welcome-screen::after {
+    display: none;
+}
+
+.welcome-content {
+    position: relative;
+    width: 100%;
+    max-width: 1728px;
+    height: 100%;
+    max-height: 1117px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 64px;
+    z-index: 2;
+    gap: 0;
+}
+
+/* Text Block Container - Positioned for balanced vertical layout */
+.welcome-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* Title Block */
+.welcome-title-block {
+    width: 729px;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.welcome-title {
+    font-family: 'Grenze Gotisch', serif;
+    color: #BA9B65;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-title .title-line-1 {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 71px;
+    display: block;
+}
+
+.welcome-title .title-line-2 {
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 71px;
+    display: block;
+}
+
+/* Decorative Separator */
+.welcome-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+
+.separator-line {
+    flex-shrink: 0;
+}
+
+.separator-diamond-small {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+}
+
+.separator-diamond-center {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+}
+
+/* Text Content */
+.welcome-text {
+    width: 569px;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.welcome-subtitle {
+    font-family: 'Mirza', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7D6450;
+    margin: 0 0 1.5rem 0;
+}
+
+.welcome-highlight {
+    font-family: 'Mirza', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #AF3030;
+    margin: 0;
+}
+
+/* Gothic Button with Dual Layer Design */
+/* Button Container - Holds both frame and button */
+.welcome-button-container {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 68px;
+    z-index: 10;
+}
+
+/* Button - Red fill with gold stroke and CONCAVE corners */
+.welcome-button-svg {
+    width: 174px;
+    height: 56px;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.welcome-button-hitbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Button Text */
+.button-text {
+    font-family: 'Grenze Gotisch', serif;
+    font-size: 22px; /* Reduced from 24px */
+    font-weight: 600;
+    fill: #BA9B65;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Hover States */
+.welcome-button-container:hover #button-shape {
+    fill: #990215;
+    stroke: #D4AF37;
+}
+
+.welcome-button-container:hover .welcome-button-svg {
+    filter: drop-shadow(0 0 15px rgba(186, 155, 101, 0.2));
+}
+
+/* Focus State */
+.welcome-button-hitbox:focus-visible {
+    outline: 2px solid #BA9B65;
+    outline-offset: 4px;
+}
+
+/* Active State */
+.welcome-button-container:active #button-shape {
+    fill: #6B0110;
+}
+
+/* Responsive adjustments for welcome screen */
+@media (max-width: 1024px) {
+    .welcome-content {
+        padding: 56px;
+    }
+    
+    .welcome-text-block {
+        top: 32%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .welcome-title .title-line-1 {
+        font-size: 36px;
+        line-height: 60px;
+    }
+    
+    .welcome-title .title-line-2 {
+        font-size: 56px;
+        line-height: 60px;
+    }
+    
+    .welcome-subtitle,
+    .welcome-highlight {
+        font-size: 20px;
+    }
+    
+    .welcome-button-container {
+        bottom: 120px;
+        width: 165px;
+        height: 60px;
+    }
+    
+    .welcome-button-svg {
+        width: 155px;
+        height: 50px;
+    }
+    
+    .button-text {
+        font-size: 19px; /* Reduced from 20px proportionally */
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-content {
+        padding: 48px 32px;
+    }
+    
+    .welcome-text-block {
+        top: 30%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .welcome-title-block {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .welcome-title .title-line-1 {
+        font-size: 28px;
+        line-height: 48px;
+    }
+    
+    .welcome-title .title-line-2 {
+        font-size: 42px;
+        line-height: 48px;
+    }
+    
+    .welcome-separator {
+        margin-bottom: 2rem;
+    }
+    
+    .separator-line {
+        width: 150px;
+        height: 1px;
+    }
+    
+    .welcome-text {
+        width: 100%;
+        margin-bottom: 2.5rem;
+    }
+    
+    .welcome-subtitle,
+    .welcome-highlight {
+        font-size: 18px;
+    }
+    
+    .welcome-button-container {
+        bottom: 80px;
+        width: 150px;
+        height: 54px;
+    }
+    
+    .welcome-button-svg {
+        width: 140px;
+        height: 45px;
+    }
+    
+    .button-text {
+        font-size: 17px; /* Reduced from 18px proportionally */
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-content {
+        padding: 32px 24px;
+    }
+    
+    .welcome-text-block {
+        top: 28%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .welcome-title-block {
+        margin-bottom: 1.5rem;
+    }
+    
+    .welcome-title .title-line-1 {
+        font-size: 22px;
+        line-height: 36px;
+    }
+    
+    .welcome-title .title-line-2 {
+        font-size: 32px;
+        line-height: 36px;
+    }
+    
+    .welcome-separator {
+        margin-bottom: 1.5rem;
+        gap: 4px;
+    }
+    
+    .separator-line {
+        width: 100px;
+    }
+    
+    .separator-diamond-small {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .separator-diamond-center {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .welcome-text {
+        margin-bottom: 2rem;
+    }
+    
+    .welcome-subtitle,
+    .welcome-highlight {
+        font-size: 16px;
+    }
+    
+    .welcome-button-container {
+        bottom: 60px;
+        width: 140px;
+        height: 50px;
+    }
+    
+    .welcome-button-svg {
+        width: 130px;
+        height: 42px;
+    }
+    
+    .button-text {
+        font-size: 15px; /* Reduced from 16px proportionally */
+    }
+}
+}
+
+/* Fallback for browsers that don't support dvh */
+@supports not (height: 100dvh) {
+    .screen {
+        height: 100vh;
+    }
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 1s ease;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typography */
+.title {
+    font-family: 'Crete Round', serif;
+    font-style: italic;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.body-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.accent-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--color-accent-pink);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+.helper-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.small-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* Buttons */
+.cta-button {
+    font-family: 'Crete Round', serif;
+    font-style: italic;
+    background: var(--color-button-bg);
+    border: none;
+    color: var(--color-button-text);
+    padding: 0.875rem 2.5rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    font-weight: 400;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.02em;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styles */
+/* #song-form margin-top is defined specifically in the submission screen section (line 187) */
+
+.form-group {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    letter-spacing: 0.01em;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.form-group input::placeholder {
+    color: rgba(207, 207, 207, 0.4);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.error-message {
+    display: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    color: var(--color-accent-pink);
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Autocomplete Dropdown - Gothic Design */
+.autocomplete-wrapper {
+    position: relative;
+}
+
+.autocomplete-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(17, 16, 30, 0.95);
+    border: 1px solid rgba(186, 155, 101, 0.3);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 100;
+    margin-top: -8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.autocomplete-dropdown.show {
+    display: block;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(186, 155, 101, 0.1);
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:hover {
+    background: rgba(186, 155, 101, 0.1);
+}
+
+.autocomplete-item-thumb {
+    flex-shrink: 0;
+    width: 56px;
+    height: 42px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
+}
+
+.autocomplete-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.autocomplete-item-info {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.autocomplete-item-title {
+    font-family: 'Mirza', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #BA9B65;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.125rem;
+}
+
+.autocomplete-item-artist {
+    font-family: 'Mirza', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* YouTube Preview Card - Gothic Design */
+.spotify-preview {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem; /* Reduced from 2rem for tighter spacing */
+    padding: 1.5rem;
+    background: rgba(186, 155, 101, 0.05);
+    border: 1px solid rgba(186, 155, 101, 0.2);
+    border-radius: 8px;
+    text-align: left;
+    align-items: center; /* Center all items vertically */
+    gap: 1.25rem;
+}
+
+.spotify-preview-album {
+    flex-shrink: 0;
+    width: 90px; /* Increased from 80px to align with timeline at bottom */
+    height: 90px; /* Increased from 80px to align with timeline at bottom */
+    background: rgba(186, 155, 101, 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0.5;
+    border: 1px solid rgba(186, 155, 101, 0.2);
+}
+
+.spotify-preview-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.spotify-preview-title {
+    font-family: 'Mirza', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #BA9B65;
+    margin-bottom: 0.125rem; /* Reduced from 0.375rem to bring artist closer to title */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-preview-artist {
+    font-family: 'Mirza', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.65);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.75rem;
+}
+
+.spotify-preview-progress {
+    margin-top: 0.75rem;
+    min-height: 24px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.spotify-preview-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(186, 155, 101, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+}
+
+.spotify-preview-progress-fill {
+    height: 100%;
+    background: #BA9B65;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.spotify-preview-time {
+    font-family: 'Mirza', serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(186, 155, 101, 0.5);
+}
+
+.spotify-preview-play {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: #80020F;
+    border: 1.5px solid #BA9B65; /* Reduced from 2px */
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center; /* Center vertically within the card */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-preview-play:hover {
+    transform: scale(1.05);
+    background: #990215;
+    border-color: #D4AF37;
+    box-shadow: 0 4px 12px rgba(186, 155, 101, 0.3);
+}
+
+.spotify-preview-play::after {
+    content: '▶';
+    font-size: 16px;
+    color: #BA9B65;
+    margin-left: 2px;
+}
+
+.spotify-preview-play.playing::after {
+    content: '';
+    margin-left: 0;
+    width: 14px;
+    height: 14px;
+    display: block;
+    background: 
+        linear-gradient(#BA9B65 0 0),
+        linear-gradient(#BA9B65 0 0);
+    background-size: 4px 14px;
+    background-position: 0 0, 10px 0;
+    background-repeat: no-repeat;
+    border-radius: 1px;
+}
+
+/* Responsive adjustments for submission and thank you screens */
+@media (max-width: 1024px) {
+    .submission-content,
+    .thankyou-content {
+        padding: 56px;
+    }
+    
+    .submission-text-block {
+        margin-top: 3vh;
+    }
+    
+    .submission-title {
+        font-size: 54px;
+    }
+    
+    .thankyou-small-title {
+        font-size: 36px;
+        line-height: 64px;
+    }
+    
+    .thankyou-main-title {
+        font-size: 60px;
+        line-height: 64px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 20px;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 120px;
+        width: 165px;
+        height: 60px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 155px;
+        height: 50px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 19px; /* Matches proportion to new 22px base */
+    }
+}
+
+@media (max-width: 768px) {
+    .submission-content,
+    .thankyou-content {
+        padding: 48px 32px;
+    }
+    
+    .submission-text-block {
+        margin-top: 2.5vh;
+        margin-bottom: 0.25rem; /* Match main style - target ~8-12px total gap */
+    }
+    
+    .thankyou-text-block {
+        top: 30%;
+    }
+    
+    .submission-title {
+        font-size: 48px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .thankyou-small-title {
+        font-size: 32px;
+        line-height: 56px;
+    }
+    
+    .thankyou-main-title {
+        font-size: 52px;
+        line-height: 56px;
+    }
+    
+    .submission-separator,
+    .thankyou-separator {
+        margin-bottom: 1.5rem;
+    }
+    
+    .separator-line {
+        width: 150px;
+        height: 1px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 18px;
+    }
+    
+    #submission-screen .form-group label {
+        font-size: 16px;
+    }
+    
+    #submission-screen .form-group input {
+        font-size: 16px; /* Increased from 15px to match desktop increase ratio */
+        padding: 0.875rem 1rem;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 80px;
+        width: 150px;
+        height: 54px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 140px;
+        height: 45px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 17px; /* Matches proportion to new 22px base */
+    }
+    
+    .spotify-preview {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .spotify-preview-album {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+    }
+    
+    .spotify-preview-title {
+        font-size: 16px;
+    }
+    
+    .spotify-preview-artist {
+        font-size: 14px;
+    }
+    
+    .spotify-preview-play {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (max-width: 480px) {
+    .submission-content,
+    .thankyou-content {
+        padding: 32px 24px;
+    }
+    
+    .submission-text-block {
+        margin-top: 2vh;
+        margin-bottom: 0.25rem; /* Match main style - target ~8-12px total gap */
+    }
+    
+    .thankyou-text-block {
+        top: 28%;
+    }
+    
+    .submission-title {
+        font-size: 36px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .thankyou-small-title {
+        font-size: 28px;
+        line-height: 48px;
+    }
+    
+    .thankyou-main-title {
+        font-size: 40px;
+        line-height: 48px;
+    }
+    
+    .submission-separator,
+    .thankyou-separator {
+        margin-bottom: 1.5rem;
+        gap: 4px;
+    }
+    
+    .separator-line {
+        width: 100px;
+    }
+    
+    .separator-diamond-small {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .separator-diamond-center {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .submission-helper-text,
+    .thankyou-text {
+        font-size: 16px;
+    }
+    
+    #submission-screen .form-group label {
+        font-size: 14px;
+    }
+    
+    #submission-screen .form-group input {
+        font-size: 15px; /* Increased from 14px to match desktop increase ratio */
+        padding: 0.75rem;
+    }
+    
+    .submission-button-container,
+    .thankyou-button-container {
+        bottom: 60px;
+        width: 140px;
+        height: 50px;
+    }
+    
+    .submission-button-svg,
+    .thankyou-button-svg {
+        width: 130px;
+        height: 42px;
+    }
+    
+    #submit-button-text,
+    #restart-button-text {
+        font-size: 15px; /* Matches proportion to new 22px base */
+    }
+    
+    .spotify-preview {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .spotify-preview-album {
+        width: 100%;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .spotify-preview-play {
+        width: 48px;
+        height: 48px;
+        align-self: center;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    /* Stop all animations for users who prefer reduced motion */
+    body::before {
+        animation: none;
+        filter: blur(60px);
+        opacity: 0.3;
+    }
+    
+    * {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+    }
+    
+    *::before,
+    *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+    }
+}

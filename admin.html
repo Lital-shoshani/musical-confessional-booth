@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Song Submissions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1A1717;
+            color: #FFFFFF;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FF0000 0%, #FFEA28 33%, #60DAFF 68%, #F31DDE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #60DAFF;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.25rem;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        button.primary {
+            background: #60DAFF;
+            color: #1A1717;
+            border-color: #60DAFF;
+        }
+        
+        button.primary:hover {
+            background: #50CAE0;
+            border-color: #50CAE0;
+        }
+        
+        button.danger {
+            background: rgba(255, 77, 77, 0.2);
+            border-color: rgba(255, 77, 77, 0.4);
+            color: #FF6B6B;
+        }
+        
+        button.danger:hover {
+            background: rgba(255, 77, 77, 0.3);
+            border-color: rgba(255, 77, 77, 0.6);
+        }
+        
+        .table-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        th {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            font-size: 0.95rem;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+        
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .timestamp {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        .video-link {
+            color: #60DAFF;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .video-link:hover {
+            color: #50CAE0;
+            text-decoration: underline;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            table {
+                font-size: 0.85rem;
+            }
+            
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Song Submissions</h1>
+        <p class="subtitle">View all submitted songs from the Musical Confessional Booth</p>
+        
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="total-count">0</div>
+                <div class="stat-label">Total Submissions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="today-count">0</div>
+                <div class="stat-label">Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="week-count">0</div>
+                <div class="stat-label">This Week</div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button class="primary" onclick="exportToCSV()">📥 Export to CSV</button>
+            <button onclick="refreshData()">🔄 Refresh</button>
+            <button class="danger" onclick="clearAllData()">🗑️ Clear All Data</button>
+        </div>
+        
+        <div class="table-wrapper">
+            <table id="submissions-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Song</th>
+                        <th>Artist</th>
+                        <th>Video</th>
+                        <th>Submitted</th>
+                    </tr>
+                </thead>
+                <tbody id="submissions-body">
+                    <!-- Submissions will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Load and display submissions
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('songSubmissions') || '[]');
+            const tbody = document.getElementById('submissions-body');
+            
+            if (submissions.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">🎵</div>
+                                <div>No submissions yet</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                updateStats(submissions);
+                return;
+            }
+            
+            // Sort by timestamp (most recent first)
+            submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            tbody.innerHTML = submissions.map((sub, index) => {
+                const date = new Date(sub.timestamp);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const videoLink = sub.videoId 
+                    ? `<a href="https://www.youtube.com/watch?v=${sub.videoId}" target="_blank" class="video-link">Watch</a>`
+                    : '—';
+                
+                return `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${sub.song || '—'}</td>
+                        <td>${sub.artist || '—'}</td>
+                        <td>${videoLink}</td>
+                        <td class="timestamp">${formattedDate}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            updateStats(submissions);
+        }
+        
+        // Update statistics
+        function updateStats(submissions) {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            
+            const todayCount = submissions.filter(sub => 
+                new Date(sub.timestamp) >= today
+            ).length;
+            
+            const weekCount = submissions.filter(sub => 
+                new Date(sub.timestamp) >= weekAgo
+            ).length;
+            
+            document.getElementById('total-count').textContent = submissions.length;
+            document.getElementById('today-count').textContent = todayCount;
+            document.getElementById('week-count').textContent = weekCount;
+        }
+        
+        // Export to CSV
+        function exportToCSV() {
+            const submissions = JSON.parse(localStorage.getItem('songSubmissions') || '[]');
+            
+            if (submissions.length === 0) {
+                alert('No submissions to export');
+                return;
+            }
+            
+            // Create CSV content
+            const headers = ['Song', 'Artist', 'Video ID', 'YouTube Link', 'Timestamp'];
+            const rows = submissions.map(sub => [
+                sub.song || '',
+                sub.artist || '',
+                sub.videoId || '',
+                sub.videoId ? `https://www.youtube.com/watch?v=${sub.videoId}` : '',
+                sub.timestamp
+            ]);
+            
+            const csvContent = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+            
+            // Download CSV file
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', `song-submissions-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Refresh data
+        function refreshData() {
+            loadSubmissions();
+        }
+        
+        // Clear all data (with confirmation)
+        function clearAllData() {
+            const confirmDelete = confirm(
+                'Are you sure you want to delete ALL submissions? This cannot be undone.'
+            );
+            
+            if (confirmDelete) {
+                const doubleConfirm = confirm(
+                    'This will permanently delete all song submissions. Are you absolutely sure?'
+                );
+                
+                if (doubleConfirm) {
+                    localStorage.removeItem('songSubmissions');
+                    loadSubmissions();
+                    alert('All submissions have been deleted.');
+                }
+            }
+        }
+        
+        // Load submissions on page load
+        document.addEventListener('DOMContentLoaded', loadSubmissions);
+    </script>
+</body>
+</html>
