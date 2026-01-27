@@ -183,7 +183,8 @@ body::after {
 #song-form {
     width: 100%;
     max-width: 540px;
-    margin: 0 0 2rem 0; /* Reduced from 3rem to bring form closer to text */
+    margin: 0 0 2rem 0; /* Space below form */
+    margin-top: 1rem; /* Significantly reduced space between helper text and form */
     position: relative;
     z-index: 5;
 }
@@ -205,7 +206,7 @@ body::after {
 
 #submission-screen .form-group input {
     width: 100%;
-    padding: 1rem 1.25rem;
+    padding: 0.875rem 1.25rem; /* Reduced padding for proper centering */
     font-size: 17px; /* Increased from 16px */
     background: rgba(186, 155, 101, 0.05);
     border: 1px solid rgba(186, 155, 101, 0.2);
@@ -214,7 +215,8 @@ body::after {
     transition: all 0.3s ease;
     font-family: 'Mirza', serif;
     font-weight: 400;
-    line-height: 1.6; /* Adjusted for better vertical centering */
+    line-height: 1.4; /* Tightened line-height for true vertical centering */
+    height: 50px; /* Fixed height for consistent centering */
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -297,7 +299,7 @@ body::after {
 
 /* Ensure submit button text is properly sized and centered */
 #submit-button-text {
-    font-size: 23px; /* Slightly smaller than default 24px */
+    font-size: 22px; /* Reduced to match Screen 1 button text */
 }
 
 /* Thank You Screen - Match Welcome Screen Design */
@@ -581,7 +583,7 @@ body::after {
 /* Button Text */
 .button-text {
     font-family: 'Grenze Gotisch', serif;
-    font-size: 24px;
+    font-size: 22px; /* Reduced from 24px */
     font-weight: 600;
     fill: #BA9B65;
     pointer-events: none;
@@ -647,7 +649,7 @@ body::after {
     }
     
     .button-text {
-        font-size: 20px;
+        font-size: 19px; /* Reduced from 20px proportionally */
     }
 }
 
@@ -707,7 +709,7 @@ body::after {
     }
     
     .button-text {
-        font-size: 18px;
+        font-size: 17px; /* Reduced from 18px proportionally */
     }
 }
 
@@ -775,7 +777,7 @@ body::after {
     }
     
     .button-text {
-        font-size: 16px;
+        font-size: 15px; /* Reduced from 16px proportionally */
     }
 }
 }
@@ -1047,8 +1049,8 @@ body::after {
 
 .spotify-preview-album {
     flex-shrink: 0;
-    width: 80px;
-    height: 80px;
+    width: 90px; /* Increased from 80px to align with timeline at bottom */
+    height: 90px; /* Increased from 80px to align with timeline at bottom */
     background: rgba(186, 155, 101, 0.1);
     border-radius: 6px;
     display: flex;
@@ -1056,6 +1058,7 @@ body::after {
     justify-content: center;
     font-size: 2rem;
     opacity: 0.5;
+    align-self: flex-start; /* Align to top */
     border: 1px solid rgba(186, 155, 101, 0.2);
     align-self: flex-start; /* Align with top of info block */
 }
@@ -1128,6 +1131,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center; /* Center vertically within the card */
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     align-self: flex-start; /* Align with top of card */
@@ -1198,7 +1202,7 @@ body::after {
     
     #submit-button-text,
     #restart-button-text {
-        font-size: 19px; /* Slightly reduced to match proportion */
+        font-size: 19px; /* Matches proportion to new 22px base */
     }
 }
 
@@ -1262,7 +1266,7 @@ body::after {
     
     #submit-button-text,
     #restart-button-text {
-        font-size: 17px; /* Slightly reduced to match proportion */
+        font-size: 17px; /* Matches proportion to new 22px base */
     }
     
     .spotify-preview {
@@ -1360,7 +1364,7 @@ body::after {
     
     #submit-button-text,
     #restart-button-text {
-        font-size: 16px;
+        font-size: 15px; /* Matches proportion to new 22px base */
     }
     
     .spotify-preview {
