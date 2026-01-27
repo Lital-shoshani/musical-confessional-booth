@@ -246,7 +246,7 @@ body::after {
 /* Gothic Button for Submission Screen */
 .submission-button-container {
     position: fixed;
-    bottom: 177px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     width: 185px;
@@ -374,7 +374,7 @@ body::after {
 /* Gothic Button for Thank You Screen */
 .thankyou-button-container {
     position: fixed;
-    bottom: 177px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     width: 185px;
@@ -550,7 +550,7 @@ body::after {
 /* Button Container - Holds both frame and button */
 .welcome-button-container {
     position: fixed;
-    bottom: 177px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     width: 185px;
