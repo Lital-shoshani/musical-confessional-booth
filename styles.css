@@ -131,7 +131,7 @@ body::after {
     align-items: center;
     justify-content: flex-start;
     padding: 64px;
-    padding-bottom: 360px; /* Increased to ensure clear space above button */
+    padding-bottom: 380px; /* Increased from 360px to ensure dropdown stays above button */
     z-index: 2;
     gap: 0;
 }
@@ -143,7 +143,7 @@ body::after {
     align-items: center;
     width: 100%;
     margin-top: 4vh;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Reduced from 2rem to bring form closer */
 }
 
 /* Title */
@@ -183,7 +183,7 @@ body::after {
 #song-form {
     width: 100%;
     max-width: 540px;
-    margin: 0 0 3rem 0; /* Added bottom margin to create space above button */
+    margin: 0 0 2rem 0; /* Reduced from 3rem to bring form closer to text */
     position: relative;
     z-index: 5;
 }
@@ -206,7 +206,7 @@ body::after {
 #submission-screen .form-group input {
     width: 100%;
     padding: 1rem 1.25rem;
-    font-size: 16px;
+    font-size: 17px; /* Increased from 16px */
     background: rgba(186, 155, 101, 0.05);
     border: 1px solid rgba(186, 155, 101, 0.2);
     border-radius: 8px;
@@ -214,8 +214,10 @@ body::after {
     transition: all 0.3s ease;
     font-family: 'Mirza', serif;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6; /* Adjusted for better vertical centering */
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 #submission-screen .form-group input::placeholder {
@@ -291,6 +293,11 @@ body::after {
 
 .submission-button-container:active #submit-button-shape {
     fill: #6B0110;
+}
+
+/* Ensure submit button text is properly sized and centered */
+#submit-button-text {
+    font-size: 23px; /* Slightly smaller than default 24px */
 }
 
 /* Thank You Screen - Match Welcome Screen Design */
@@ -1028,13 +1035,13 @@ body::after {
 .spotify-preview {
     display: flex;
     margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Reduced from 2rem for tighter spacing */
     padding: 1.5rem;
     background: rgba(186, 155, 101, 0.05);
     border: 1px solid rgba(186, 155, 101, 0.2);
     border-radius: 8px;
     text-align: left;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start for baseline alignment */
     gap: 1.25rem;
 }
 
@@ -1050,6 +1057,7 @@ body::after {
     font-size: 2rem;
     opacity: 0.5;
     border: 1px solid rgba(186, 155, 101, 0.2);
+    align-self: flex-start; /* Align with top of info block */
 }
 
 .spotify-preview-info {
@@ -1114,7 +1122,7 @@ body::after {
     width: 48px;
     height: 48px;
     background: #80020F;
-    border: 2px solid #BA9B65;
+    border: 1.5px solid #BA9B65; /* Reduced from 2px */
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -1122,6 +1130,7 @@ body::after {
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    align-self: flex-start; /* Align with top of card */
 }
 
 .spotify-preview-play:hover {
@@ -1189,7 +1198,7 @@ body::after {
     
     #submit-button-text,
     #restart-button-text {
-        font-size: 20px;
+        font-size: 19px; /* Slightly reduced to match proportion */
     }
 }
 
@@ -1201,7 +1210,7 @@ body::after {
     
     .submission-text-block {
         margin-top: 2.5vh;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem; /* Match main style reduction */
     }
     
     .thankyou-text-block {
@@ -1234,7 +1243,7 @@ body::after {
     }
     
     #submission-screen .form-group input {
-        font-size: 15px;
+        font-size: 16px; /* Increased from 15px to match desktop increase ratio */
         padding: 0.875rem 1rem;
     }
     
@@ -1253,7 +1262,7 @@ body::after {
     
     #submit-button-text,
     #restart-button-text {
-        font-size: 18px;
+        font-size: 17px; /* Slightly reduced to match proportion */
     }
     
     .spotify-preview {
@@ -1332,7 +1341,7 @@ body::after {
     }
     
     #submission-screen .form-group input {
-        font-size: 14px;
+        font-size: 15px; /* Increased from 14px to match desktop increase ratio */
         padding: 0.75rem;
     }
     
