@@ -175,7 +175,7 @@ body::after {
     line-height: normal;
     color: #7D6450;
     text-align: center;
-    margin: 0;
+    margin: 0 0 1rem 0; /* Add 1rem margin-bottom for 16px gap */
     max-width: 850px;
 }
 
@@ -184,7 +184,7 @@ body::after {
     width: 100%;
     max-width: 540px;
     margin: 0 0 2rem 0; /* Space below form */
-    margin-top: 1rem; /* Significantly reduced space between helper text and form */
+    margin-top: 0; /* Further reduced to minimize gap with helper text */
     position: relative;
     z-index: 5;
 }
@@ -206,7 +206,7 @@ body::after {
 
 #submission-screen .form-group input {
     width: 100%;
-    padding: 0.875rem 1.25rem; /* Reduced padding for proper centering */
+    padding: 0 1rem; /* Horizontal padding only */
     font-size: 17px; /* Increased from 16px */
     background: rgba(186, 155, 101, 0.05);
     border: 1px solid rgba(186, 155, 101, 0.2);
@@ -215,11 +215,9 @@ body::after {
     transition: all 0.3s ease;
     font-family: 'Mirza', serif;
     font-weight: 400;
-    line-height: 1.4; /* Tightened line-height for true vertical centering */
+    line-height: 50px; /* Match height for perfect vertical centering */
     height: 50px; /* Fixed height for consistent centering */
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
 }
 
 #submission-screen .form-group input::placeholder {
@@ -1043,7 +1041,7 @@ body::after {
     border: 1px solid rgba(186, 155, 101, 0.2);
     border-radius: 8px;
     text-align: left;
-    align-items: flex-start; /* Changed from center to flex-start for baseline alignment */
+    align-items: center; /* Center all items vertically */
     gap: 1.25rem;
 }
 
@@ -1058,9 +1056,7 @@ body::after {
     justify-content: center;
     font-size: 2rem;
     opacity: 0.5;
-    align-self: flex-start; /* Align to top */
     border: 1px solid rgba(186, 155, 101, 0.2);
-    align-self: flex-start; /* Align with top of info block */
 }
 
 .spotify-preview-info {
@@ -1134,7 +1130,6 @@ body::after {
     align-self: center; /* Center vertically within the card */
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    align-self: flex-start; /* Align with top of card */
 }
 
 .spotify-preview-play:hover {
