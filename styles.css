@@ -199,7 +199,7 @@ body::after {
     font-family: 'Mirza', serif;
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.375rem; /* Reduced from 0.75rem for tighter spacing */
     color: #BA9B65;
     letter-spacing: 0.01em;
 }
@@ -218,6 +218,8 @@ body::after {
     line-height: 50px; /* Match height for perfect vertical centering */
     height: 50px; /* Fixed height for consistent centering */
     box-sizing: border-box;
+    vertical-align: middle; /* Ensure vertical centering */
+    text-align: left; /* Ensure text starts from left */
 }
 
 #submission-screen .form-group input::placeholder {
