@@ -889,9 +889,7 @@ body::after {
 }
 
 /* Form Styles */
-#song-form {
-    margin-top: 2rem;
-}
+/* #song-form margin-top is defined specifically in the submission screen section (line 187) */
 
 .form-group {
     margin-bottom: 2rem;
